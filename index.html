@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act Compliance für Chatbots | Anima</title>
+    <meta name="description" content="EU AI Act Deadline August 2026. Ist Ihr Chatbot compliant? Readiness Assessment in 2 Wochen. Ab €1.500.">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --cream: #FDFCFA;
+            --warm-gray-50: #FAF9F7;
+            --warm-gray-100: #F3F1ED;
+            --warm-gray-200: #E8E5DF;
+            --warm-gray-300: #D4D0C8;
+            --warm-gray-400: #A8A29E;
+            --warm-gray-500: #78716C;
+            --warm-gray-600: #57534E;
+            --warm-gray-700: #44403C;
+            --warm-gray-900: #1C1917;
+            --red: #C0392B;
+            --red-bg: #FDF2F0;
+            --red-border: #F0C4BE;
+            --amber: #D97706;
+            --amber-bg: #FFFBEB;
+            --amber-border: #FDE68A;
+            --green: #16A34A;
+            --green-bg: #F0FDF4;
+            --green-border: #BBF7D0;
+            --blue: #2563EB;
+            --blue-bg: #EFF6FF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--warm-gray-900);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--warm-gray-200);
+            position: sticky; top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-left { display: flex; align-items: center; gap: 36px; }
+        .nav-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px; font-weight: 500; color: var(--warm-gray-900);
+            letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { font-size: 14px; color: var(--warm-gray-500); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--warm-gray-900); }
+        .nav-cta {
+            background: var(--warm-gray-900); color: var(--white);
+            padding: 9px 20px; border-radius: 6px; text-decoration: none;
+            font-size: 13px; font-weight: 600; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--warm-gray-700); }
+
+        /* HERO */
+        .hero { padding: 72px 0 56px; }
+        .deadline-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 5px 14px; background: var(--red-bg); border: 1px solid var(--red-border);
+            border-radius: 100px; font-family: 'JetBrains Mono', monospace;
+            font-size: 12px; color: var(--red); margin-bottom: 24px;
+        }
+        .deadline-badge .dot {
+            width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+            animation: blink 1.2s ease-in-out infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+        .hero h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(34px, 5vw, 54px); line-height: 1.15;
+            margin-bottom: 18px; max-width: 700px; font-weight: 700;
+        }
+        .hero h1 em { color: var(--red); font-style: italic; }
+        .hero-sub {
+            font-size: 17px; color: var(--warm-gray-600); max-width: 540px;
+            margin-bottom: 36px; line-height: 1.75;
+        }
+        .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: var(--warm-gray-900); color: var(--white);
+            padding: 14px 26px; border-radius: 8px; text-decoration: none;
+            font-weight: 700; font-size: 14px; transition: all 0.2s;
+        }
+        .btn-primary:hover { background: var(--warm-gray-700); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .btn-ghost {
+            color: var(--warm-gray-600); padding: 14px 26px; border-radius: 8px;
+            text-decoration: none; font-weight: 500; font-size: 14px;
+            border: 1px solid var(--warm-gray-200); transition: all 0.2s; background: var(--white);
+        }
+        .btn-ghost:hover { border-color: var(--warm-gray-300); background: var(--warm-gray-50); }
+
+        /* COUNTDOWN */
+        .countdown-section {
+            padding: 36px 0; background: var(--red-bg);
+            border-top: 1px solid var(--red-border); border-bottom: 1px solid var(--red-border);
+        }
+        .countdown-inner { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+        .countdown-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+        }
+        .countdown-grid { display: flex; gap: 10px; }
+        .countdown-item {
+            background: var(--white); border: 1px solid var(--red-border);
+            border-radius: 8px; padding: 12px 18px; text-align: center; min-width: 72px;
+        }
+        .countdown-number {
+            font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 700;
+            color: var(--red); line-height: 1;
+        }
+        .countdown-unit { font-size: 9px; color: var(--warm-gray-400); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        /* SECTIONS */
+        .section { padding: 64px 0; }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+            color: var(--blue); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(24px, 3.5vw, 36px); margin-bottom: 36px;
+            max-width: 600px; line-height: 1.25; font-weight: 700;
+        }
+
+        /* STATS */
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 40px; }
+        .stat-card {
+            background: var(--white); border: 1px solid var(--warm-gray-200);
+            border-radius: 10px; padding: 24px; transition: all 0.2s;
+        }
+        .stat-card:hover { border-color: var(--warm-gray-300); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .stat-number { font-family: 'Source Serif 4', serif; font-size: 34px; font-weight: 700; margin-bottom: 4px; }
+        .stat-number.red { color: var(--red); }
+        .stat-number.amber { color: var(--amber); }
+        .stat-desc { font-size: 13px; color: var(--warm-gray-500); line-height: 1.6; }
+        .stat-source { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--warm-gray-400); margin-top: 8px; }
+
+        /* LEGAL QUOTE */
+        .legal-quote {
+            border-left: 3px solid var(--red); padding: 24px 28px;
+            background: var(--warm-gray-50); border-radius: 0 10px 10px 0; margin: 40px 0;
+        }
+        .legal-quote p {
+            font-family: 'Source Serif 4', serif; font-size: 17px; font-style: italic;
+            line-height: 1.65; color: var(--warm-gray-600);
+        }
+        .legal-quote .source {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px;
+            color: var(--warm-gray-400); margin-top: 12px; font-style: normal;
+        }
+
+        /* AUDIT SHOWCASE */
+        .audit-showcase {
+            background: var(--warm-gray-900); border-radius: 14px;
+            padding: 40px; margin: 40px 0; color: #E8E6E1;
+        }
+        .audit-showcase-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px;
+            color: var(--amber); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;
+        }
+        .audit-showcase h3 {
+            font-family: 'Source Serif 4', serif; font-size: 22px;
+            margin-bottom: 24px; color: #F5F3EF; font-weight: 600;
+        }
+        .audit-bars { display: grid; gap: 12px; }
+        .audit-bar-row { display: grid; grid-template-columns: 100px 1fr 48px; align-items: center; gap: 12px; }
+        .audit-bar-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8C8880; text-align: right; }
+        .audit-bar-track { background: rgba(255,255,255,0.07); border-radius: 3px; height: 20px; overflow: hidden; }
+        .audit-bar-fill { height: 100%; border-radius: 3px; }
+        .audit-bar-fill.good { background: #4ADE80; }
+        .audit-bar-fill.mid { background: #FBBF24; }
+        .audit-bar-fill.bad { background: #F87171; }
+        .audit-bar-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; }
+        .audit-bar-val.good { color: #4ADE80; }
+        .audit-bar-val.mid { color: #FBBF24; }
+        .audit-bar-val.bad { color: #F87171; }
+        .audit-footnote { font-size: 11px; color: #6B6660; margin-top: 18px; font-style: italic; }
+
+        /* CHECKLIST */
+        .checklist { display: grid; gap: 10px; }
+        .checklist-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 16px 20px; background: var(--white); border: 1px solid var(--warm-gray-200);
+            border-radius: 8px; transition: all 0.2s;
+        }
+        .checklist-item:hover { border-color: var(--warm-gray-300); }
+        .check-dot {
+            width: 20px; height: 20px; border-radius: 5px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; flex-shrink: 0; margin-top: 2px; font-weight: 700;
+        }
+        .check-dot.auto { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); }
+        .check-dot.manual { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber); }
+        .check-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 1px; }
+        .check-text p { font-size: 12px; color: var(--warm-gray-500); line-height: 1.5; }
+        .check-badge {
+            font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.5px;
+            padding: 2px 7px; border-radius: 3px; margin-left: auto; flex-shrink: 0; align-self: center;
+        }
+        .check-badge.g { background: var(--green-bg); color: var(--green); }
+        .check-badge.a { background: var(--amber-bg); color: var(--amber); }
+
+        /* TIMELINE */
+        .timeline { position: relative; margin: 28px 0; padding-left: 40px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px;
+            background: linear-gradient(to bottom, var(--green), var(--amber), var(--red));
+        }
+        .tl-item { padding: 16px 0; position: relative; }
+        .tl-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            position: absolute; left: -33px; top: 22px;
+        }
+        .tl-dot.now { background: var(--green); box-shadow: 0 0 0 3px var(--green-bg); }
+        .tl-dot.soon { background: var(--amber); box-shadow: 0 0 0 3px var(--amber-bg); }
+        .tl-dot.end { background: var(--red); box-shadow: 0 0 0 3px var(--red-bg); }
+        .tl-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--warm-gray-400); margin-bottom: 2px; }
+        .tl-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+        .tl-desc { font-size: 13px; color: var(--warm-gray-500); }
+
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .pricing-card {
+            background: var(--white); border: 1px solid var(--warm-gray-200);
+            border-radius: 12px; padding: 32px; position: relative; transition: all 0.2s;
+        }
+        .pricing-card:hover { border-color: var(--warm-gray-300); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
+        .pricing-card.featured { border: 2px solid var(--green); }
+        .pricing-pop {
+            position: absolute; top: -10px; left: 20px;
+            background: var(--green); color: white; font-size: 10px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
+        }
+        .pricing-name { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--warm-gray-400); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .pricing-price { font-family: 'Source Serif 4', serif; font-size: 36px; font-weight: 700; margin-bottom: 2px; }
+        .pricing-period { font-size: 12px; color: var(--warm-gray-400); margin-bottom: 16px; }
+        .pricing-desc { font-size: 13px; color: var(--warm-gray-500); margin-bottom: 18px; line-height: 1.6; }
+        .pricing-features { list-style: none; margin-bottom: 24px; }
+        .pricing-features li {
+            font-size: 12px; color: var(--warm-gray-600); padding: 6px 0;
+            border-bottom: 1px solid var(--warm-gray-100); display: flex; align-items: center; gap: 8px;
+        }
+        .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 11px; }
+        .pricing-btn {
+            display: block; text-align: center; padding: 12px;
+            border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 13px; transition: all 0.2s;
+        }
+        .pricing-btn.dark { background: var(--warm-gray-900); color: white; }
+        .pricing-btn.dark:hover { background: var(--warm-gray-700); }
+        .pricing-btn.light { background: var(--warm-gray-100); color: var(--warm-gray-700); }
+        .pricing-btn.light:hover { background: var(--warm-gray-200); }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid var(--warm-gray-200); padding: 20px 0; }
+        .faq-q { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .faq-a { font-size: 13px; color: var(--warm-gray-500); line-height: 1.7; }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 72px 0; text-align: center;
+            background: var(--warm-gray-50); border-top: 1px solid var(--warm-gray-200);
+        }
+        .final-cta h2 {
+            font-family: 'Source Serif 4', serif; font-size: clamp(26px, 4vw, 40px);
+            margin-bottom: 14px; line-height: 1.2; font-weight: 700;
+        }
+        .final-cta p { font-size: 15px; color: var(--warm-gray-500); margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; }
+
+        /* FOOTER */
+        footer { border-top: 1px solid var(--warm-gray-200); padding: 32px 0; text-align: center; }
+        footer p { font-size: 12px; color: var(--warm-gray-400); }
+        footer a { color: var(--warm-gray-500); text-decoration: none; }
+        footer a:hover { color: var(--warm-gray-700); }
+
+        @media (max-width: 768px) {
+            .hero { padding: 48px 0 32px; }
+            .nav-links { display: none; }
+            .audit-showcase { padding: 24px; }
+            .audit-bar-row { grid-template-columns: 72px 1fr 40px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .countdown-inner { gap: 16px; }
+            .countdown-item { padding: 10px 14px; min-width: 60px; }
+            .countdown-number { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">Anima</a>
+            <div class="nav-links">
+                <a href="#problem">Problem</a>
+                <a href="#checklist">Checkliste</a>
+                <a href="#pricing">Preise</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+        <a href="mailto:timvonsachs@gmail.com?subject=EU%20AI%20Act%20Erstberatung" class="nav-cta">Erstberatung →</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="deadline-badge"><span class="dot"></span> Deadline: 2. August 2026</div>
+        <h1>Ihr Chatbot wird ab August <em>illegal.</em></h1>
+        <p class="hero-sub">Der EU AI Act verpflichtet jedes Unternehmen mit AI-Chatbot zu Transparenz, Monitoring und Dokumentation. Strafen: bis €15 Mio. oder 3% Jahresumsatz. Wir machen Sie in 2 Wochen compliant.</p>
+        <div class="hero-actions">
+            <a href="mailto:timvonsachs@gmail.com?subject=Readiness%20Assessment" class="btn-primary">Readiness Assessment anfragen →</a>
+            <a href="#pricing" class="btn-ghost">Pakete ansehen</a>
+        </div>
+    </div>
+</section>
+
+<section class="countdown-section">
+    <div class="container">
+        <div class="countdown-inner">
+            <div class="countdown-text">Verbleibende Zeit</div>
+            <div class="countdown-grid">
+                <div class="countdown-item"><div class="countdown-number" id="cd-d">---</div><div class="countdown-unit">Tage</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="cd-h">--</div><div class="countdown-unit">Std</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="cd-m">--</div><div class="countdown-unit">Min</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="cd-s">--</div><div class="countdown-unit">Sek</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="problem">
+    <div class="container">
+        <div class="section-label">Das Problem</div>
+        <div class="section-title">Die meisten Unternehmen wissen nicht, dass ihr Chatbot falsch liegt.</div>
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-number red">20–40%</div><div class="stat-desc">Fehlerquote bei AI-Chatbots in Produktion. Falsche Produktinfos, erfundene Policies, halluzinierte Fakten.</div><div class="stat-source">Gartner, Statista 2025</div></div>
+            <div class="stat-card"><div class="stat-number amber">62%</div><div class="stat-desc">Accuracy bei CHECK24 und Otto — getestet mit unserem Audit-Tool. Ein Drittel aller Antworten ist falsch.</div><div class="stat-source">Anima Quick Audit, April 2026</div></div>
+            <div class="stat-card"><div class="stat-number red">~50%</div><div class="stat-desc">der deutschen Unternehmen sind nicht auf den EU AI Act vorbereitet. Die Deadline ist in 4 Monaten.</div><div class="stat-source">Deloitte Survey 2025</div></div>
+        </div>
+        <div class="legal-quote">
+            <p>„Der Anbieter stellt sicher, dass natürliche Personen darüber informiert werden, dass sie mit einem KI-System interagieren — klar, unterscheidbar und spätestens zu Beginn der ersten Interaktion."</p>
+            <div class="source">— EU AI Act, Artikel 50, Absatz 1</div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top:0">
+    <div class="container">
+        <div class="audit-showcase">
+            <div class="audit-showcase-label">Echte Ergebnisse</div>
+            <h3>Wir haben die größten deutschen Chatbots getestet.</h3>
+            <div class="audit-bars">
+                <div class="audit-bar-row"><div class="audit-bar-label">Shipping</div><div class="audit-bar-track"><div class="audit-bar-fill mid" style="width:70%"></div></div><div class="audit-bar-val mid">70%</div></div>
+                <div class="audit-bar-row"><div class="audit-bar-label">Retouren</div><div class="audit-bar-track"><div class="audit-bar-fill mid" style="width:70%"></div></div><div class="audit-bar-val mid">70%</div></div>
+                <div class="audit-bar-row"><div class="audit-bar-label">Pricing</div><div class="audit-bar-track"><div class="audit-bar-fill mid" style="width:70%"></div></div><div class="audit-bar-val mid">70%</div></div>
+                <div class="audit-bar-row"><div class="audit-bar-label">Produkte</div><div class="audit-bar-track"><div class="audit-bar-fill bad" style="width:50%"></div></div><div class="audit-bar-val bad">50%</div></div>
+                <div class="audit-bar-row"><div class="audit-bar-label">Medical</div><div class="audit-bar-track"><div class="audit-bar-fill bad" style="width:30%"></div></div><div class="audit-bar-val bad">30%</div></div>
+            </div>
+            <p class="audit-footnote">Quick Audits an CHECK24 und Otto, April 2026. Vollständiger 50-Fragen-Audit auf Anfrage.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--warm-gray-200)" id="checklist">
+    <div class="container">
+        <div class="section-label">Compliance Checkliste</div>
+        <div class="section-title">Was Ihr Chatbot bis August 2026 braucht.</div>
+        <div class="checklist">
+            <div class="checklist-item"><div class="check-dot auto">✓</div><div class="check-text"><h4>KI-Transparenz-Hinweis</h4><p>Nutzer müssen wissen dass sie mit KI sprechen. Klar, barrierefrei, vor der ersten Interaktion.</p></div><div class="check-badge g">Anima prüft</div></div>
+            <div class="checklist-item"><div class="check-dot auto">✓</div><div class="check-text"><h4>Risiko-Klassifizierung</h4><p>Dokumentierter Nachweis: Warum ist Ihr Bot Limited Risk? 1-Seiter mit Use-Case und Output-Typ.</p></div><div class="check-badge g">Anima generiert</div></div>
+            <div class="checklist-item"><div class="check-dot auto">✓</div><div class="check-text"><h4>Accuracy Monitoring</h4><p>Nachweisbare Messung pro Themenkategorie. Faktische Korrektheit, nicht Deflection Rate.</p></div><div class="check-badge g">Anima trackt</div></div>
+            <div class="checklist-item"><div class="check-dot auto">✓</div><div class="check-text"><h4>Human Escalation</h4><p>Automatische Weiterleitung an Menschen bei Unsicherheit. Mit Kontext und Eskalationsgrund.</p></div><div class="check-badge g">Anima integriert</div></div>
+            <div class="checklist-item"><div class="check-dot auto">✓</div><div class="check-text"><h4>Logging & Audit Trail</h4><p>Jede Interaktion protokolliert. Timestamp, Kategorie, Trust Score. Exportierbar.</p></div><div class="check-badge g">Anima loggt</div></div>
+            <div class="checklist-item"><div class="check-dot manual">→</div><div class="check-text"><h4>Datenschutz-Review</h4><p>DSGVO-konforme Verarbeitung. Einwilligung, Löschfristen, Auftragsverarbeitung.</p></div><div class="check-badge a">Beratung</div></div>
+            <div class="checklist-item"><div class="check-dot manual">→</div><div class="check-text"><h4>AI-Literacy Schulung</h4><p>Workshop für alle Mitarbeiter die mit dem Chatbot arbeiten.</p></div><div class="check-badge a">Beratung</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--warm-gray-200)">
+    <div class="container">
+        <div class="section-label">Timeline</div>
+        <div class="section-title">Von heute bis August.</div>
+        <div class="timeline">
+            <div class="tl-item"><div class="tl-dot now"></div><div class="tl-date">April 2026 — jetzt</div><div class="tl-title">Readiness Assessment</div><div class="tl-desc">50 Fragen, Accuracy pro Kategorie, Compliance-Checkliste. In 2 Wochen wissen Sie wo Sie stehen.</div></div>
+            <div class="tl-item"><div class="tl-dot soon"></div><div class="tl-date">Mai — Juni 2026</div><div class="tl-title">Dokumentation & Monitoring</div><div class="tl-desc">Risiko-Klassifizierung, Logging, Transparenz-Hinweis, Monitoring aktivieren.</div></div>
+            <div class="tl-item"><div class="tl-dot soon"></div><div class="tl-date">Juli 2026</div><div class="tl-title">Schulungen & Feinschliff</div><div class="tl-desc">AI-Literacy Workshop, Human Escalation testen, finaler Compliance-Report.</div></div>
+            <div class="tl-item"><div class="tl-dot end"></div><div class="tl-date">2. August 2026</div><div class="tl-title">EU AI Act tritt in Kraft</div><div class="tl-desc">Verstöße können geahndet werden. Bis €15 Mio. oder 3% Jahresumsatz.</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--warm-gray-200)" id="pricing">
+    <div class="container">
+        <div class="section-label">Pakete</div>
+        <div class="section-title">Compliance muss nicht teuer sein.</div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-name">Assessment</div>
+                <div class="pricing-price">€1.500</div><div class="pricing-period">Einmalig</div>
+                <div class="pricing-desc">In 2 Wochen wissen ob Ihr Chatbot compliant ist.</div>
+                <ul class="pricing-features"><li>50-Fragen Chatbot Audit</li><li>Accuracy pro Kategorie</li><li>Ground Truth Verification</li><li>Halluzinations-Report</li><li>Compliance-Checkliste</li><li>PDF für Rechtsabteilung</li></ul>
+                <a href="mailto:timvonsachs@gmail.com?subject=Assessment" class="pricing-btn light">Assessment anfragen</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-pop">Empfohlen</div>
+                <div class="pricing-name">Monitoring</div>
+                <div class="pricing-price">€499</div><div class="pricing-period">Pro Monat</div>
+                <div class="pricing-desc">Laufende Überwachung. Compliance auf Knopfdruck.</div>
+                <ul class="pricing-features"><li>Alles aus Assessment</li><li>Continuous Trust Monitoring</li><li>Wöchentlicher Report</li><li>Echtzeit-Alert bei Problemen</li><li>Automatischer Handoff</li><li>Quarterly Behörden-Report</li></ul>
+                <a href="mailto:timvonsachs@gmail.com?subject=Monitoring" class="pricing-btn dark">Monitoring starten →</a>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-name">Zertifikat</div>
+                <div class="pricing-price">€5.000</div><div class="pricing-period">Pro Jahr</div>
+                <div class="pricing-desc">Anima Verified Badge — sichtbar für Ihre Kunden.</div>
+                <ul class="pricing-features"><li>Alles aus Monitoring</li><li>Verified Badge im Chat</li><li>Öffentlicher Trust Score</li><li>Re-Zertifizierung</li><li>Priority Support</li><li>Custom Kategorien</li></ul>
+                <a href="mailto:timvonsachs@gmail.com?subject=Zertifikat" class="pricing-btn light">Kontakt aufnehmen</a>
+            </div>
+        </div>
+        <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--warm-gray-400)">Klassische AI-Compliance-Beratung kostet €50.000–500.000. Wir automatisieren den Prozess.</p>
+    </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--warm-gray-200)">
+    <div class="container">
+        <div class="section-label">FAQ</div>
+        <div class="section-title">Häufige Fragen.</div>
+        <div class="faq-item"><div class="faq-q">Ist mein E-Commerce Chatbot High Risk?</div><div class="faq-a">Wahrscheinlich nicht. Normale Support-Chatbots sind Limited Risk (Artikel 50). High Risk gilt bei medizinischer Beratung, Kreditentscheidungen oder HR-Screening.</div></div>
+        <div class="faq-item"><div class="faq-q">Was passiert wenn ich nichts tue?</div><div class="faq-a">Ab August 2026 drohen Bußgelder bis €15 Mio. oder 3% des weltweiten Jahresumsatzes.</div></div>
+        <div class="faq-item"><div class="faq-q">Wie lange dauert das Assessment?</div><div class="faq-a">2 Wochen. Knowledge Base hochladen, 50 Fragen testen, PDF-Report mit Ergebnissen und Empfehlungen.</div></div>
+        <div class="faq-item"><div class="faq-q">Muss ich meinen Chatbot-Anbieter wechseln?</div><div class="faq-a">Nein. Anima funktioniert mit jedem Chatbot — Tidio, Gorgias, Zendesk, Intercom, Custom Builds.</div></div>
+        <div class="faq-item"><div class="faq-q">Warum nicht meinen Anbieter fragen?</div><div class="faq-a">Weil Ihr Anbieter Deflection Rate misst — nicht Accuracy. Unabhängige Prüfung braucht einen unabhängigen Prüfer.</div></div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <div class="container">
+        <h2>Die Deadline wartet nicht.</h2>
+        <p>Erstes Quick Assessment kostenlos — 10 Fragen, 30 Minuten, 1-Seite Report.</p>
+        <a href="mailto:timvonsachs@gmail.com?subject=Kostenloses%20Quick%20Assessment" class="btn-primary">Kostenloses Quick Assessment →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — Cognitive Integrity Infrastructure</p>
+        <p><a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a> · <a href="https://anima-support.onrender.com/compare">Live Demo</a> · <a href="blog.html">Blog</a></p>
+    </div>
+</footer>
+
+<script>
+!function(){const dl=new Date('2026-08-02T00:00:00+02:00');function u(){const n=new Date,d=dl-n;if(d<=0)return;const dd=Math.floor(d/864e5),hh=Math.floor(d%864e5/36e5),mm=Math.floor(d%36e5/6e4),ss=Math.floor(d%6e4/1e3);document.getElementById('cd-d').textContent=dd;document.getElementById('cd-h').textContent=String(hh).padStart(2,'0');document.getElementById('cd-m').textContent=String(mm).padStart(2,'0');document.getElementById('cd-s').textContent=String(ss).padStart(2,'0')}u();setInterval(u,1e3)}();
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wir haben die Chatbots der größten deutschen Online-Shops getestet | Anima</title>
+    <meta name="description" content="CHECK24: 62% Accuracy. Otto: 62%. Was unsere Quick Audits über den Zustand von AI im deutschen E-Commerce verraten.">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white:#FFFFFF;--warm-gray-50:#FAF9F7;--warm-gray-100:#F3F1ED;--warm-gray-200:#E8E5DF;
+            --warm-gray-300:#D4D0C8;--warm-gray-400:#A8A29E;--warm-gray-500:#78716C;--warm-gray-600:#57534E;
+            --warm-gray-700:#44403C;--warm-gray-900:#1C1917;--red:#C0392B;--red-bg:#FDF2F0;--red-border:#F0C4BE;
+            --green:#16A34A;--green-bg:#F0FDF4;--blue:#2563EB;--amber:#D97706;--amber-bg:#FFFBEB;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--white);color:var(--warm-gray-900);line-height:1.7;-webkit-font-smoothing:antialiased}
+        .container{max-width:1060px;margin:0 auto;padding:0 24px}
+        .narrow{max-width:680px;margin:0 auto;padding:0 24px}
+
+        nav{padding:14px 0;border-bottom:1px solid var(--warm-gray-200);position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);z-index:100}
+        nav .container{display:flex;justify-content:space-between;align-items:center}
+        .nav-left{display:flex;align-items:center;gap:36px}
+        .nav-logo{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;color:var(--warm-gray-900);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+        .nav-links{display:flex;gap:28px}
+        .nav-links a{font-size:14px;color:var(--warm-gray-500);text-decoration:none;transition:color .2s}
+        .nav-links a:hover{color:var(--warm-gray-900)}
+        .nav-cta{background:var(--warm-gray-900);color:var(--white);padding:9px 20px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600}
+
+        .article-header{padding:56px 0 28px}
+        .article-back{font-size:13px;color:var(--warm-gray-400);text-decoration:none;margin-bottom:20px;display:inline-block}
+        .article-back:hover{color:var(--warm-gray-600)}
+        .article-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+        .article-header h1{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.2;margin-bottom:12px}
+        .article-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--warm-gray-400)}
+
+        .article-body{padding-bottom:64px}
+        .article-body p{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.85;color:var(--warm-gray-700);margin-bottom:20px}
+        .article-body h2{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;margin-top:44px;margin-bottom:14px;color:var(--warm-gray-900)}
+        .article-body strong{color:var(--warm-gray-900)}
+        .article-body a{color:var(--blue)}
+
+        .results-table{width:100%;border-collapse:collapse;margin:24px 0;font-family:'DM Sans',sans-serif;font-size:14px}
+        .results-table th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--warm-gray-200);font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--warm-gray-400);text-transform:uppercase;letter-spacing:1px}
+        .results-table td{padding:10px 12px;border-bottom:1px solid var(--warm-gray-100)}
+        .results-table .score{font-family:'JetBrains Mono',monospace;font-weight:700}
+        .results-table .good{color:var(--green)}
+        .results-table .mid{color:var(--amber)}
+        .results-table .bad{color:var(--red)}
+
+        .insight-box{background:var(--warm-gray-50);border:1px solid var(--warm-gray-200);border-radius:10px;padding:24px;margin:28px 0}
+        .insight-box h4{font-family:'DM Sans',sans-serif;font-size:15px;margin-bottom:6px}
+        .insight-box p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--warm-gray-500);margin-bottom:0;line-height:1.6}
+
+        .cta-banner{background:var(--warm-gray-50);border:1px solid var(--warm-gray-200);border-radius:10px;padding:28px;margin:40px 0;text-align:center}
+        .cta-banner h3{font-size:18px;margin-bottom:6px}
+        .cta-banner p{font-size:13px;color:var(--warm-gray-500);margin-bottom:16px;font-family:'DM Sans',sans-serif}
+        .cta-banner a{background:var(--warm-gray-900);color:white;padding:10px 22px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600}
+
+        footer{border-top:1px solid var(--warm-gray-200);padding:32px 0;text-align:center}
+        footer p{font-size:12px;color:var(--warm-gray-400)}
+        footer a{color:var(--warm-gray-500);text-decoration:none}
+
+        @media(max-width:768px){.nav-links{display:none}.results-table{font-size:12px}.results-table th,.results-table td{padding:8px 6px}}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">Anima</a>
+            <div class="nav-links">
+                <a href="index.html#problem">Problem</a>
+                <a href="index.html#pricing">Preise</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+        <a href="mailto:timvonsachs@gmail.com?subject=Erstberatung" class="nav-cta">Erstberatung →</a>
+    </div>
+</nav>
+
+<div class="narrow">
+
+    <div class="article-header">
+        <a href="blog.html" class="article-back">← Zurück zum Blog</a>
+        <div class="article-tag">Research</div>
+        <h1>Wir haben die Chatbots der größten deutschen Online-Shops getestet</h1>
+        <div class="article-meta">Tim von Sachs · April 2026 · 5 Min. Lesezeit</div>
+    </div>
+
+    <div class="article-body">
+
+        <p>Wie gut sind die AI-Chatbots der größten deutschen Online-Shops wirklich? Nicht laut Marketing-Material — sondern gemessen an faktischer Korrektheit?</p>
+
+        <p>Wir haben diese Woche die Chatbots von <strong>CHECK24</strong> und <strong>Otto</strong> mit unserem Quick Audit Tool getestet. 10 Fragen pro Bot, in 6 Kategorien: Shipping, Retouren, Pricing, Produkte, Policy-Randfälle und Medical/Legal.</p>
+
+        <p>Das Ergebnis: <strong>Beide Bots liegen bei 62% Accuracy.</strong> Jede dritte Antwort ist falsch.</p>
+
+        <h2>Die Ergebnisse im Detail</h2>
+
+        <table class="results-table">
+            <thead>
+                <tr><th>Kategorie</th><th>CHECK24</th><th>Otto</th><th>Risiko</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Shipping</td><td class="score mid">70%</td><td class="score mid">70%</td><td>Niedrig</td></tr>
+                <tr><td>Retouren</td><td class="score mid">70%</td><td class="score mid">70%</td><td>Mittel</td></tr>
+                <tr><td>Pricing</td><td class="score mid">70%</td><td class="score mid">70%</td><td>Mittel</td></tr>
+                <tr><td>Policy Edge Cases</td><td class="score mid">70%</td><td class="score mid">70%</td><td>Mittel</td></tr>
+                <tr><td>Produkte</td><td class="score bad">50%</td><td class="score bad">50%</td><td>Hoch</td></tr>
+                <tr><td>Medical/Legal</td><td class="score bad">30%</td><td class="score bad">30%</td><td>Kritisch</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Was uns überrascht hat</h2>
+
+        <p><strong>Ottos Bot war ehrlich.</strong> Bei Fragen die er nicht beantworten konnte, sagte er offen: „Ich kann dir dazu leider keine Auskunft geben." Das ist genau das Verhalten das wir empfehlen. Lieber ehrlich als halluziniert.</p>
+
+        <p><strong>Bei kritischen Themen versagten beide.</strong> Fragen zu Allergien und Produktkompatibilität — Themen wo eine falsche Antwort reale Konsequenzen hat — wurden ohne ausreichende Vorsicht beantwortet. Kein Disclaimer, kein Verweis an einen Arzt, keine Absicherung.</p>
+
+        <div class="insight-box">
+            <h4>Warum das wichtig ist</h4>
+            <p>Ab August 2026 verlangt der EU AI Act Transparenz und Monitoring für AI-Chatbots. Ein Bot der bei Medical-Fragen mit 30% Accuracy antwortet ist ein Haftungsrisiko. Nicht für den Bot-Anbieter — für das Unternehmen das ihn betreibt.</p>
+        </div>
+
+        <h2>Was Chatbot-Anbieter messen — und was sie nicht messen</h2>
+
+        <p>Die meisten Chatbot-Anbieter messen <strong>Deflection Rate</strong>: Wie viele Kunden haben aufgehört Fragen zu stellen nachdem der Bot geantwortet hat. Eine hohe Deflection Rate sieht gut aus — aber sie sagt nichts darüber aus ob die Antwort <em>richtig</em> war.</p>
+
+        <p>Ein Kunde der eine falsche Antwort bekommt und frustriert aufgibt zählt als „resolved." Ein Kunde der drei Mal nachfragt weil der Bot Unsinn erzählt und dann zum Telefon greift zählt als „escalated." Die Metrik bestraft Nachfragen und belohnt Aufgeben.</p>
+
+        <p>Das ist der strukturelle Interessenkonflikt: <strong>Chatbot-Anbieter verdienen mehr wenn der Bot mehr antwortet. Nicht wenn er richtiger antwortet.</strong></p>
+
+        <h2>Was das für Ihr Unternehmen bedeutet</h2>
+
+        <p>Wenn CHECK24 und Otto — zwei der größten Online-Shops in Deutschland — bei 62% liegen, wie sieht es bei Ihnen aus?</p>
+
+        <p>Die Antwort kennen Sie wahrscheinlich nicht. Nicht weil Sie nachlässig sind, sondern weil es kein einfaches Tool gab das diese Frage beantwortet.</p>
+
+        <p>Jetzt gibt es eines.</p>
+
+        <div class="cta-banner">
+            <h3>Wie gut ist Ihr Chatbot?</h3>
+            <p>Kostenloses Quick Assessment — 10 Fragen, Accuracy pro Kategorie, 1-Seite PDF-Report. In 30 Minuten.</p>
+            <a href="mailto:timvonsachs@gmail.com?subject=Quick%20Assessment%20(Blog)">Quick Assessment anfragen →</a>
+        </div>
+
+        <h2>Methodik</h2>
+
+        <p>Jeder Bot wurde mit 10 Fragen getestet, verteilt auf 6 Kategorien: Shipping (2), Retouren (2), Pricing (1), Produkte (2), Policy Edge Cases (2) und Medical/Legal (1). Die Antworten wurden von einem zweiten LLM als unabhängigem Judge bewertet — auf Accuracy, Honesty, Safety und Halluzination.</p>
+
+        <p>Die Quick Audits sind ein Indikator, kein vollständiger Test. Ein Full Audit mit 50 Fragen und Ground Truth Verification gegen die echte Knowledge Base des Unternehmens liefert präzisere Ergebnisse.</p>
+
+        <p><em>Tim von Sachs ist AI-Entwickler und Gründer von Anima. Anfragen: <a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a></em></p>
+
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — Cognitive Integrity Infrastructure</p>
+        <p><a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a> · <a href="blog.html">Blog</a> · <a href="https://anima-support.onrender.com/compare">Live Demo</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

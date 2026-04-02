@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Anima — Cognitive Integrity Infrastructure</title>
+    <meta name="description" content="Insights zu AI-Qualitätssicherung, EU AI Act Compliance und Chatbot-Accuracy.">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --warm-gray-50: #FAF9F7;
+            --warm-gray-100: #F3F1ED;
+            --warm-gray-200: #E8E5DF;
+            --warm-gray-300: #D4D0C8;
+            --warm-gray-400: #A8A29E;
+            --warm-gray-500: #78716C;
+            --warm-gray-600: #57534E;
+            --warm-gray-700: #44403C;
+            --warm-gray-900: #1C1917;
+            --red: #C0392B;
+            --red-bg: #FDF2F0;
+            --red-border: #F0C4BE;
+            --green: #16A34A;
+            --green-bg: #F0FDF4;
+            --blue: #2563EB;
+            --blue-bg: #EFF6FF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--white); color: var(--warm-gray-900);
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            padding: 14px 0; border-bottom: 1px solid var(--warm-gray-200);
+            position: sticky; top: 0; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px); z-index: 100;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-left { display: flex; align-items: center; gap: 36px; }
+        .nav-logo {
+            font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 500;
+            color: var(--warm-gray-900); letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { font-size: 14px; color: var(--warm-gray-500); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--warm-gray-900); }
+        .nav-links a.active { color: var(--warm-gray-900); font-weight: 600; }
+        .nav-cta {
+            background: var(--warm-gray-900); color: var(--white);
+            padding: 9px 20px; border-radius: 6px; text-decoration: none;
+            font-size: 13px; font-weight: 600; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--warm-gray-700); }
+
+        /* BLOG HEADER */
+        .blog-header { padding: 56px 0 40px; border-bottom: 1px solid var(--warm-gray-200); }
+        .blog-header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 36px; font-weight: 700; margin-bottom: 8px;
+        }
+        .blog-header p { font-size: 16px; color: var(--warm-gray-500); }
+
+        /* BLOG LIST */
+        .blog-list { padding: 32px 0; }
+
+        .blog-card {
+            padding: 28px 0; border-bottom: 1px solid var(--warm-gray-200);
+            display: block; text-decoration: none; color: inherit; transition: all 0.2s;
+        }
+        .blog-card:hover { padding-left: 8px; }
+
+        .blog-card-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;
+        }
+        .blog-card-tag.compliance { color: var(--red); }
+        .blog-card-tag.research { color: var(--blue); }
+        .blog-card-tag.product { color: var(--green); }
+
+        .blog-card h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 22px; font-weight: 600; margin-bottom: 6px; line-height: 1.3;
+        }
+        .blog-card p { font-size: 14px; color: var(--warm-gray-500); line-height: 1.6; }
+        .blog-card-meta {
+            font-size: 12px; color: var(--warm-gray-400); margin-top: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* EMPTY STATE */
+        .blog-empty {
+            padding: 60px 0; text-align: center;
+        }
+        .blog-empty p {
+            font-size: 15px; color: var(--warm-gray-400);
+            font-style: italic;
+        }
+
+        /* ARTICLE */
+        .article-header { padding: 56px 0 32px; }
+        .article-back {
+            font-size: 13px; color: var(--warm-gray-400); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 4px; margin-bottom: 20px;
+        }
+        .article-back:hover { color: var(--warm-gray-600); }
+        .article-header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.2; margin-bottom: 12px;
+        }
+        .article-meta {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px;
+            color: var(--warm-gray-400); margin-bottom: 32px;
+        }
+        .article-body {
+            padding-bottom: 64px;
+        }
+        .article-body p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 17px; line-height: 1.85; color: var(--warm-gray-700);
+            margin-bottom: 20px;
+        }
+        .article-body h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px; font-weight: 700; margin-top: 40px; margin-bottom: 12px;
+        }
+        .article-body h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px; font-weight: 700; margin-top: 28px; margin-bottom: 8px;
+        }
+        .article-body ul, .article-body ol {
+            margin-bottom: 20px; padding-left: 24px;
+        }
+        .article-body li {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 16px; line-height: 1.8; color: var(--warm-gray-600); margin-bottom: 6px;
+        }
+        .article-body blockquote {
+            border-left: 3px solid var(--warm-gray-300); padding: 12px 24px;
+            margin: 24px 0; background: var(--warm-gray-50); border-radius: 0 8px 8px 0;
+        }
+        .article-body blockquote p {
+            font-style: italic; color: var(--warm-gray-500); font-size: 16px;
+        }
+        .article-body code {
+            font-family: 'JetBrains Mono', monospace; font-size: 14px;
+            background: var(--warm-gray-100); padding: 2px 6px; border-radius: 3px;
+        }
+        .article-body a { color: var(--blue); }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: var(--warm-gray-50); border: 1px solid var(--warm-gray-200);
+            border-radius: 10px; padding: 28px; margin: 40px 0; text-align: center;
+        }
+        .cta-banner h3 { font-size: 18px; margin-bottom: 6px; }
+        .cta-banner p { font-size: 13px; color: var(--warm-gray-500); margin-bottom: 16px; }
+        .cta-banner a {
+            background: var(--warm-gray-900); color: white; padding: 10px 22px;
+            border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;
+        }
+
+        footer { border-top: 1px solid var(--warm-gray-200); padding: 32px 0; text-align: center; }
+        footer p { font-size: 12px; color: var(--warm-gray-400); }
+        footer a { color: var(--warm-gray-500); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">Anima</a>
+            <div class="nav-links">
+                <a href="index.html#problem">Problem</a>
+                <a href="index.html#checklist">Checkliste</a>
+                <a href="index.html#pricing">Preise</a>
+                <a href="blog.html" class="active">Blog</a>
+            </div>
+        </div>
+        <a href="mailto:timvonsachs@gmail.com?subject=Erstberatung" class="nav-cta">Erstberatung →</a>
+    </div>
+</nav>
+
+<div class="container-narrow">
+
+    <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Insights zu AI-Qualitätssicherung, EU AI Act und Chatbot-Accuracy.</p>
+    </div>
+
+    <div class="blog-list">
+
+        <a href="artikel-eu-ai-act-chatbots.html" class="blog-card">
+            <div class="blog-card-tag compliance">EU AI Act</div>
+            <h2>EU AI Act und Chatbots — Was Unternehmen bis August 2026 wissen müssen</h2>
+            <p>Die meisten E-Commerce Chatbots fallen unter Limited Risk. Aber die Transparenzpflichten sind trotzdem verbindlich — und die Strafen real. Ein Überblick.</p>
+            <div class="blog-card-meta">April 2026 · 8 Min. Lesezeit</div>
+        </a>
+
+        <a href="artikel-chatbots-getestet.html" class="blog-card">
+            <div class="blog-card-tag research">Research</div>
+            <h2>Wir haben die Chatbots der größten deutschen Online-Shops getestet</h2>
+            <p>CHECK24: 62%. Otto: 62%. Was unsere Quick Audits über den Zustand von AI im deutschen E-Commerce verraten.</p>
+            <div class="blog-card-meta">April 2026 · 5 Min. Lesezeit</div>
+        </a>
+
+        <a href="artikel-deflection-rate-chatbots.html" class="blog-card">
+            <div class="blog-card-tag product">Produkt</div>
+            <h2>Warum Deflection Rate die falsche Metrik für Chatbots ist</h2>
+            <p>Chatbot-Anbieter messen wie viele Kunden aufhören zu fragen. Nicht wie viele die richtige Antwort bekommen. Warum das ein Problem ist.</p>
+            <div class="blog-card-meta">April 2026 · 6 Min. Lesezeit</div>
+        </a>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+        <h3>Ist Ihr Chatbot compliant?</h3>
+        <p>Kostenloses Quick Assessment — 10 Fragen, 30 Minuten, 1-Seite Report.</p>
+        <a href="mailto:timvonsachs@gmail.com?subject=Quick%20Assessment">Quick Assessment anfragen →</a>
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — Cognitive Integrity Infrastructure</p>
+        <p><a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a> · <a href="blog.html">Blog</a> · <a href="https://anima-support.onrender.com/compare">Live Demo</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

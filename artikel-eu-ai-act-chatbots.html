@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act und Chatbots — Was Unternehmen bis August 2026 wissen müssen | Anima</title>
+    <meta name="description" content="Der EU AI Act tritt im August 2026 in Kraft. Was bedeutet das für Unternehmen mit AI-Chatbots? Anforderungen, Strafen und Compliance-Checkliste.">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white:#FFFFFF;--warm-gray-50:#FAF9F7;--warm-gray-100:#F3F1ED;--warm-gray-200:#E8E5DF;
+            --warm-gray-300:#D4D0C8;--warm-gray-400:#A8A29E;--warm-gray-500:#78716C;--warm-gray-600:#57534E;
+            --warm-gray-700:#44403C;--warm-gray-900:#1C1917;--red:#C0392B;--red-bg:#FDF2F0;--red-border:#F0C4BE;
+            --green:#16A34A;--green-bg:#F0FDF4;--blue:#2563EB;--amber:#D97706;--amber-bg:#FFFBEB;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--white);color:var(--warm-gray-900);line-height:1.7;-webkit-font-smoothing:antialiased}
+        .container{max-width:1060px;margin:0 auto;padding:0 24px}
+        .narrow{max-width:680px;margin:0 auto;padding:0 24px}
+
+        nav{padding:14px 0;border-bottom:1px solid var(--warm-gray-200);position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);z-index:100}
+        nav .container{display:flex;justify-content:space-between;align-items:center}
+        .nav-left{display:flex;align-items:center;gap:36px}
+        .nav-logo{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;color:var(--warm-gray-900);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+        .nav-links{display:flex;gap:28px}
+        .nav-links a{font-size:14px;color:var(--warm-gray-500);text-decoration:none;transition:color .2s}
+        .nav-links a:hover{color:var(--warm-gray-900)}
+        .nav-cta{background:var(--warm-gray-900);color:var(--white);padding:9px 20px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600}
+
+        .article-header{padding:56px 0 28px}
+        .article-back{font-size:13px;color:var(--warm-gray-400);text-decoration:none;margin-bottom:20px;display:inline-block}
+        .article-back:hover{color:var(--warm-gray-600)}
+        .article-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+        .article-header h1{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.2;margin-bottom:12px}
+        .article-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--warm-gray-400)}
+
+        .article-body{padding-bottom:64px}
+        .article-body p{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.85;color:var(--warm-gray-700);margin-bottom:20px}
+        .article-body h2{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;margin-top:44px;margin-bottom:14px;color:var(--warm-gray-900)}
+        .article-body h3{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;margin-top:32px;margin-bottom:8px}
+        .article-body ul,.article-body ol{margin-bottom:20px;padding-left:24px}
+        .article-body li{font-family:'Source Serif 4',Georgia,serif;font-size:16px;line-height:1.8;color:var(--warm-gray-600);margin-bottom:6px}
+        .article-body blockquote{border-left:3px solid var(--warm-gray-300);padding:12px 24px;margin:24px 0;background:var(--warm-gray-50);border-radius:0 8px 8px 0}
+        .article-body blockquote p{font-style:italic;color:var(--warm-gray-500);font-size:16px}
+        .article-body strong{color:var(--warm-gray-900)}
+        .article-body a{color:var(--blue)}
+
+        .callout{background:var(--red-bg);border:1px solid var(--red-border);border-radius:10px;padding:24px;margin:28px 0}
+        .callout h4{font-size:14px;color:var(--red);margin-bottom:4px}
+        .callout p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--warm-gray-600);margin-bottom:0}
+
+        .checklist-mini{margin:24px 0}
+        .checklist-mini li{font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;color:var(--warm-gray-600);margin-bottom:4px;list-style:none;padding-left:24px;position:relative}
+        .checklist-mini li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+        .checklist-mini li.manual::before{content:'→';color:var(--amber)}
+
+        .cta-banner{background:var(--warm-gray-50);border:1px solid var(--warm-gray-200);border-radius:10px;padding:28px;margin:40px 0;text-align:center}
+        .cta-banner h3{font-size:18px;margin-bottom:6px}
+        .cta-banner p{font-size:13px;color:var(--warm-gray-500);margin-bottom:16px;font-family:'DM Sans',sans-serif}
+        .cta-banner a{background:var(--warm-gray-900);color:white;padding:10px 22px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600}
+
+        footer{border-top:1px solid var(--warm-gray-200);padding:32px 0;text-align:center}
+        footer p{font-size:12px;color:var(--warm-gray-400)}
+        footer a{color:var(--warm-gray-500);text-decoration:none}
+
+        @media(max-width:768px){.nav-links{display:none}}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">Anima</a>
+            <div class="nav-links">
+                <a href="index.html#problem">Problem</a>
+                <a href="index.html#pricing">Preise</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+        <a href="mailto:timvonsachs@gmail.com?subject=Erstberatung" class="nav-cta">Erstberatung →</a>
+    </div>
+</nav>
+
+<div class="narrow">
+
+    <div class="article-header">
+        <a href="blog.html" class="article-back">← Zurück zum Blog</a>
+        <div class="article-tag">EU AI Act</div>
+        <h1>EU AI Act und Chatbots — Was Unternehmen bis August 2026 wissen müssen</h1>
+        <div class="article-meta">Tim von Sachs · April 2026 · 8 Min. Lesezeit</div>
+    </div>
+
+    <div class="article-body">
+
+        <p>Am 2. August 2026 tritt der EU AI Act vollständig in Kraft. Für jedes Unternehmen das einen AI-Chatbot betreibt — ob auf der eigenen Website, in WhatsApp oder als internes Tool — gelten ab diesem Tag verbindliche Transparenz- und Dokumentationspflichten.</p>
+
+        <p>Die gute Nachricht: Die meisten E-Commerce Chatbots sind <strong>kein High-Risk System</strong>. Die weniger gute: Die Transparenzpflichten gelten trotzdem. Und die Strafen sind real.</p>
+
+        <div class="callout">
+            <h4>Die Kernzahl</h4>
+            <p>Bis zu €15 Mio. oder 3% des weltweiten Jahresumsatzes — das droht bei Verstoß gegen Artikel 50 des EU AI Acts. Und fast die Hälfte der deutschen Unternehmen ist laut Deloitte noch nicht vorbereitet.</p>
+        </div>
+
+        <h2>Was der EU AI Act für Chatbots bedeutet</h2>
+
+        <p>Der EU AI Act klassifiziert AI-Systeme in vier Risikostufen: Unzulässig, High Risk, Limited Risk und Minimal Risk. Für die meisten Customer-Service-Chatbots gilt: <strong>Limited Risk mit Transparenzpflichten nach Artikel 50.</strong></p>
+
+        <p>Das bedeutet konkret: Ihre Kunden müssen wissen, dass sie mit einer KI sprechen. Nicht irgendwo versteckt in den AGB — sondern klar, unterscheidbar und vor der ersten Interaktion.</p>
+
+        <blockquote>
+            <p>„Der Anbieter stellt sicher, dass natürliche Personen darüber informiert werden, dass sie mit einem KI-System interagieren — klar, unterscheidbar und spätestens zu Beginn der ersten Interaktion."</p>
+            <p style="font-style:normal;font-size:12px;color:var(--warm-gray-400);margin-top:8px;margin-bottom:0">— EU AI Act, Artikel 50, Absatz 1</p>
+        </blockquote>
+
+        <h2>Wann wird ein Chatbot High Risk?</h2>
+
+        <p>Ein normaler Support-Bot der Versandfragen beantwortet ist Limited Risk. Aber es gibt Grenzen. Sobald ein Chatbot in einen der Bereiche aus Anhang III des AI Acts fällt, kann er zum High-Risk-System werden:</p>
+
+        <ul>
+            <li>Medizinische Triage oder Diagnoseunterstützung</li>
+            <li>Kredit- oder Versicherungsentscheidungen</li>
+            <li>HR-Screening oder Bewerberbewertung</li>
+            <li>Zugang zu öffentlichen Leistungen</li>
+        </ul>
+
+        <p>Die Branche allein entscheidet nicht — es kommt auf die Funktion an. Ein Chatbot bei einer Versicherung der nur FAQ beantwortet ist Limited Risk. Ein Chatbot der Schadensmeldungen bewertet und Auszahlungen empfiehlt könnte High Risk sein.</p>
+
+        <h2>Die Compliance-Checkliste</h2>
+
+        <p>Was muss Ihr Chatbot bis August 2026 haben? Hier ist die praxisnahe Checkliste, unterteilt in Pflicht (rot), empfohlen (gelb) und High-Risk-Erweiterung (grün):</p>
+
+        <h3>Pflicht für jeden Chatbot</h3>
+        <ul class="checklist-mini">
+            <li>KI-Transparenz-Hinweis vor der ersten Interaktion</li>
+            <li>Dokumentierte Risiko-Klassifizierung (warum nicht High Risk?)</li>
+            <li>Datenschutz-Check (DSGVO-konforme Verarbeitung)</li>
+        </ul>
+
+        <h3>Empfohlen für robuste Compliance</h3>
+        <ul class="checklist-mini">
+            <li>Logging aller Interaktionen (anonymisiert, 6 Monate)</li>
+            <li>Human Escalation bei kritischen Themen</li>
+            <li>AI-Literacy Schulung für das Team</li>
+            <li class="manual">Accuracy Monitoring pro Themenkategorie</li>
+        </ul>
+
+        <h3>Pflicht bei High Risk</h3>
+        <ul class="checklist-mini">
+            <li class="manual">Konformitätsbewertung und CE-Kennzeichnung</li>
+            <li class="manual">Risikomanagement-System (ISO 31000)</li>
+            <li class="manual">Technische Dokumentation (20-50 Seiten)</li>
+            <li class="manual">Post-Market-Monitoring mit Incident-Reports</li>
+        </ul>
+
+        <h2>Was die meisten übersehen</h2>
+
+        <p>Die Transparenzpflicht klingt einfach: „Sag dem Kunden dass er mit einer KI spricht." Aber in der Praxis gibt es Fallstricke.</p>
+
+        <p>Erstens: Der Hinweis muss auf <strong>jedem Kanal</strong> funktionieren. Web-Chat, WhatsApp, Facebook Messenger, App — überall wo der Bot antwortet, muss der Hinweis stehen.</p>
+
+        <p>Zweitens: „Offensichtlich" ist nicht gut genug. Artikel 50 macht eine Ausnahme für Fälle wo die AI-Nutzung „aus dem Kontext offensichtlich" ist. Aber wer will das vor einer Behörde argumentieren?</p>
+
+        <p>Drittens: Generative Chatbots haben eine Zusatzpflicht. Wenn Ihr Bot synthetische Inhalte erzeugt (nicht nur vordefinierte Antworten liefert), müssen diese als AI-generiert markiert werden — maschinenlesbar.</p>
+
+        <h2>Die Zeitbombe: Accuracy</h2>
+
+        <p>Accuracy Monitoring ist im EU AI Act für Limited-Risk-Systeme nicht explizit vorgeschrieben. Aber es ist der beste Schutz den Sie haben.</p>
+
+        <p>Warum? Wenn Ihr Chatbot einem Kunden falsche medizinische Informationen gibt, falsche Preise nennt oder eine Rückgabepolicy erfindet — dann haftet Ihr Unternehmen. Nicht der Chatbot-Anbieter. Sie.</p>
+
+        <p>Wir haben diese Woche CHECK24 und Otto getestet. Beide Bots haben eine <strong>Accuracy von 62%</strong>. Das bedeutet: Jede dritte Antwort ist falsch. Bei Medical/Legal-Fragen liegt die Accuracy bei nur 30%.</p>
+
+        <p>Die Frage ist nicht ob Ihr Bot Fehler macht. Die Frage ist ob Sie es wissen und dokumentieren können.</p>
+
+        <h2>Was Sie jetzt tun sollten</h2>
+
+        <p>Vier Monate sind nicht viel. Aber genug. Hier ist der Fahrplan:</p>
+
+        <p><strong>April (jetzt):</strong> Readiness Assessment durchführen. Wo steht Ihr Bot? Welche Pflichten gelten? Wie hoch ist die Accuracy?</p>
+
+        <p><strong>Mai–Juni:</strong> Transparenz-Hinweis implementieren, Risiko-Klassifizierung dokumentieren, Logging aktivieren.</p>
+
+        <p><strong>Juli:</strong> Team schulen, Human Escalation testen, finalen Compliance-Report erstellen.</p>
+
+        <p><strong>2. August:</strong> Compliant sein.</p>
+
+        <div class="cta-banner">
+            <h3>Wie steht Ihr Chatbot da?</h3>
+            <p>Kostenloses Quick Assessment — 10 Fragen an Ihren Bot, Accuracy pro Kategorie, 1-Seite Report. In 30 Minuten.</p>
+            <a href="mailto:timvonsachs@gmail.com?subject=Quick%20Assessment%20(Blog)">Quick Assessment anfragen →</a>
+        </div>
+
+        <p><em>Tim von Sachs ist AI-Entwickler und Gründer von Anima, einem Audit- und Monitoring-Tool für AI-Chatbot-Qualität. Er hat diese Woche die Chatbots von CHECK24 und Otto getestet — beide erzielten 62% Accuracy.</em></p>
+
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — Cognitive Integrity Infrastructure</p>
+        <p><a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a> · <a href="blog.html">Blog</a> · <a href="https://anima-support.onrender.com/compare">Live Demo</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
