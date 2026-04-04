@@ -286,6 +286,23 @@
         }
         .final-cta p { font-size: 15px; color: var(--warm-gray-500); margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; }
 
+        /* LEAD FORM */
+        .lead-form-section { padding: 64px 0; border-top: 1px solid var(--warm-gray-200); background: var(--warm-gray-50); }
+        .lead-form-wrap {
+            max-width: 720px; margin: 0 auto; background: var(--white);
+            border: 1px solid var(--warm-gray-200); border-radius: 12px; padding: 28px;
+        }
+        .lead-form-wrap h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+        .lead-form-wrap p { font-size: 14px; color: var(--warm-gray-500); margin-bottom: 18px; }
+        .lead-form { display: grid; gap: 12px; }
+        .lead-form label { font-size: 12px; color: var(--warm-gray-600); font-weight: 600; }
+        .lead-form input {
+            width: 100%; border: 1px solid var(--warm-gray-300); border-radius: 8px;
+            padding: 12px; font-size: 14px; color: var(--warm-gray-900); background: var(--white);
+        }
+        .lead-form input:focus { outline: none; border-color: var(--warm-gray-700); }
+        .lead-form button { border: 0; cursor: pointer; margin-top: 4px; }
+
         /* FOOTER */
         footer { border-top: 1px solid var(--warm-gray-200); padding: 32px 0; text-align: center; }
         footer p { font-size: 12px; color: var(--warm-gray-400); }
@@ -317,7 +334,7 @@
                 <a href="blog.html">Blog</a>
             </div>
         </div>
-        <a href="mailto:timvonsachs@gmail.com?subject=EU%20AI%20Act%20Erstberatung" class="nav-cta">Erstberatung →</a>
+        <a href="#lead-form" class="nav-cta">Erstberatung →</a>
     </div>
 </nav>
 
@@ -327,7 +344,7 @@
         <h1>Ihr Chatbot wird ab August <em>illegal.</em></h1>
         <p class="hero-sub">Der EU AI Act verpflichtet jedes Unternehmen mit AI-Chatbot zu Transparenz, Monitoring und Dokumentation. Strafen: bis €15 Mio. oder 3% Jahresumsatz. Wir machen Sie in 2 Wochen compliant.</p>
         <div class="hero-actions">
-            <a href="mailto:timvonsachs@gmail.com?subject=Readiness%20Assessment" class="btn-primary">Readiness Assessment anfragen →</a>
+            <a href="#lead-form" class="btn-primary">Readiness Assessment anfragen →</a>
             <a href="#pricing" class="btn-ghost">Pakete ansehen</a>
         </div>
     </div>
@@ -420,14 +437,14 @@
                 <div class="pricing-price">€5.000</div><div class="pricing-period">Einmalig · Lieferzeit 2 Wochen</div>
                 <div class="pricing-desc">EU AI Act Readiness Assessment mit Ground-Truth-Verification, Compliance-Dokumentation und Management-Summary.</div>
                 <ul class="pricing-features"><li>Ground-Truth-Verification pro Themenkategorie</li><li>Risikoklassifizierung nach EU AI Act</li><li>Compliance-Dokumentation für Management und Legal</li><li>Management-Summary mit priorisierten Maßnahmen</li><li>Konkreter 2-Wochen-Umsetzungsplan</li></ul>
-                <a href="mailto:timvonsachs@gmail.com?subject=Deal%201%20-%20EU%20AI%20Act%20Readiness%20Assessment" class="pricing-btn dark">Deal 1 anfragen →</a>
+                <a href="#lead-form" class="pricing-btn dark">Deal 1 anfragen →</a>
             </div>
             <div class="pricing-card">
                 <div class="pricing-name">White-Label Partner</div>
                 <div class="pricing-price">€3.000–5.000</div><div class="pricing-period">Für die ersten 2–3 Audits</div>
                 <div class="pricing-desc">Für Digitalagenturen und Beratungen mit AI-Kunden: Wir sind Ihr Audit-Fulfillment im Hintergrund.</div>
                 <ul class="pricing-features"><li>White-Label Fulfillment für Partnerprojekte</li><li>2–3 Audits im Partnerpaket</li><li>Lieferung unter Ihrer Marke möglich</li><li>Schneller Start ohne eigenes Audit-Tool</li><li>Skalierbar für weitere Kunden</li></ul>
-                <a href="mailto:timvonsachs@gmail.com?subject=Deal%202%20-%20White-Label%20Partner" class="pricing-btn light">Deal 2 anfragen</a>
+                <a href="#lead-form" class="pricing-btn light">Deal 2 anfragen</a>
             </div>
         </div>
         <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--warm-gray-400)">Beide Deals sind auf schnelle Umsetzung ausgelegt: klare Deliverables, feste Timelines, direkte Entscheidungsgrundlage.</p>
@@ -450,14 +467,34 @@
     <div class="container">
         <h2>Die Deadline wartet nicht.</h2>
         <p>Erstes Quick Assessment kostenlos — 10 Fragen, 30 Minuten, 1-Seite Report.</p>
-        <a href="mailto:timvonsachs@gmail.com?subject=Kostenloses%20Quick%20Assessment" class="btn-primary">Kostenloses Quick Assessment →</a>
+        <a href="#lead-form" class="btn-primary">Kostenloses Quick Assessment →</a>
+    </div>
+</section>
+
+<section class="lead-form-section" id="lead-form">
+    <div class="container">
+        <div class="lead-form-wrap">
+            <h3>In 30 Sekunden anfragen</h3>
+            <p>Kein E-Mail-Pingpong: Name, Firma und Bot-URL eintragen — wir melden uns mit den nächsten Schritten.</p>
+            <form class="lead-form" action="https://formsubmit.co/timvonsachs@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Neue Anfrage über Landingpage">
+                <input type="hidden" name="_captcha" value="false">
+                <label for="lead-name">Name</label>
+                <input id="lead-name" name="Name" type="text" required>
+                <label for="lead-company">Firma</label>
+                <input id="lead-company" name="Firma" type="text" required>
+                <label for="lead-bot-url">Bot-URL</label>
+                <input id="lead-bot-url" name="Bot-URL" type="url" placeholder="https://..." required>
+                <button type="submit" class="btn-primary">Anfrage senden →</button>
+            </form>
+        </div>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — Cognitive Integrity Infrastructure</p>
-        <p><a href="mailto:timvonsachs@gmail.com">timvonsachs@gmail.com</a> · <a href="https://anima-support.onrender.com/compare">Live Demo</a> · <a href="blog.html">Blog</a></p>
+        <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — EU AI Act Compliance für Chatbots.</p>
+        <p>timvonsachs@gmail.com · <a href="https://anima-support.onrender.com/compare">Live Demo</a> · <a href="blog.html">Blog</a></p>
     </div>
 </footer>
 
