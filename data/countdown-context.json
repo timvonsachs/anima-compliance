@@ -1,0 +1,14 @@
+{
+  "datum": "2026-04-12",
+  "yesterday": "2026-04-11",
+  "days_left": 112,
+  "total_analyzed": 2,
+  "compliant_count": 0,
+  "non_compliant_total": 2,
+  "yesterday_total": 0,
+  "yesterday_non_compliant": 0,
+  "branche": "keine",
+  "top_issue": "Art. 52 Transparenz fehlt",
+  "has_new_audits": false,
+  "yesterday_audits": []
+}
