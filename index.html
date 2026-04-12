@@ -319,6 +319,247 @@
             .countdown-item { padding: 10px 14px; min-width: 60px; }
             .countdown-number { font-size: 22px; }
         }
+
+        /* ═══ ELEMENT A — LEBENDER ZÄHLER ═══ */
+        .live-counter-section {
+            background: var(--warm-gray-900);
+            padding: 40px 0;
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .live-counter-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            text-align: center;
+        }
+        .lc-item {
+            padding: 12px 24px;
+            border-right: 1px solid #2a2a2a;
+        }
+        .lc-item:last-child { border-right: none; }
+        .lc-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 500;
+            color: #F5F3EF;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        .lc-number.red { color: #F87171; }
+        .lc-number.amber { color: #FBBF24; }
+        .lc-label {
+            font-size: 12px;
+            color: #6B6660;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+        .lc-label strong { color: #A89F96; }
+        @media (max-width: 600px) {
+            .live-counter-inner { grid-template-columns: 1fr; }
+            .lc-item { border-right: none; border-bottom: 1px solid #2a2a2a; }
+            .lc-item:last-child { border-bottom: none; }
+        }
+
+        /* ═══ ELEMENT B — PLATTFORM-SCORES ═══ */
+        .platform-section {
+            padding: 56px 0;
+            border-top: 1px solid var(--warm-gray-200);
+            background: var(--warm-gray-50);
+        }
+        .platform-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+        .platform-table th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--warm-gray-400);
+            text-align: left;
+            padding: 10px 16px;
+            border-bottom: 2px solid var(--warm-gray-200);
+        }
+        .platform-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--warm-gray-200);
+            color: var(--warm-gray-700);
+        }
+        .platform-table tr:last-child td { border-bottom: none; }
+        .platform-table tr:hover td { background: var(--warm-gray-100); }
+        .platform-name {
+            font-weight: 600;
+            color: var(--warm-gray-900);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+        .score-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .score-badge.low { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+        .score-badge.mid { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+        .score-badge.pending { background: var(--warm-gray-100); color: var(--warm-gray-400); border: 1px solid var(--warm-gray-200); font-style: italic; }
+        .issue-tag {
+            font-size: 12px;
+            color: var(--warm-gray-500);
+        }
+        .platform-note {
+            font-size: 11px;
+            color: var(--warm-gray-400);
+            margin-top: 14px;
+            font-style: italic;
+        }
+        @media (max-width: 600px) {
+            .platform-table th:nth-child(3),
+            .platform-table td:nth-child(3) { display: none; }
+        }
+
+        /* ═══ ELEMENT C — QUICK-CHECK ═══ */
+        .quickcheck-section {
+            padding: 64px 0;
+            background: var(--warm-gray-900);
+            border-top: 1px solid #1a1a1a;
+        }
+        .quickcheck-section .section-label { color: #FBBF24; }
+        .quickcheck-section .section-title { color: #F5F3EF; max-width: 560px; }
+        .qc-form-wrap {
+            background: #111111;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 640px;
+            margin-top: 28px;
+        }
+        .qc-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .qc-url-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #E8E6E1;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .qc-url-input::placeholder { color: #555; }
+        .qc-url-input:focus { border-color: #FBBF24; }
+        .qc-email-input {
+            width: 100%;
+            padding: 12px 18px;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #8C8880;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 10px;
+        }
+        .qc-email-input::placeholder { color: #444; }
+        .qc-email-input:focus { border-color: #555; color: #E8E6E1; }
+        .qc-btn {
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            background: #FBBF24;
+            color: #111;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+        }
+        .qc-btn:hover { background: #F59E0B; }
+        .qc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .qc-note { font-size: 11px; color: #555; margin-top: 8px; }
+        .qc-loading { display: none; padding: 32px 0; text-align: center; }
+        .qc-spinner {
+            width: 32px; height: 32px;
+            border: 3px solid #2a2a2a; border-top-color: #FBBF24;
+            border-radius: 50%; animation: qc-spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes qc-spin { to { transform: rotate(360deg); } }
+        .qc-loading p { color: #6B6660; font-size: 13px; }
+        .qc-results { display: none; margin-top: 24px; }
+        .qc-result-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #1a1a1a;
+            gap: 16px;
+        }
+        .qc-result-row:last-of-type { border-bottom: none; }
+        .qc-result-label {
+            font-size: 13px;
+            color: #6B6660;
+            font-family: 'JetBrains Mono', monospace;
+            flex-shrink: 0;
+            min-width: 180px;
+        }
+        .qc-result-value { font-size: 14px; font-weight: 600; color: #E8E6E1; text-align: right; }
+        .qc-result-value.red { color: #F87171; }
+        .qc-result-value.amber { color: #FBBF24; }
+        .qc-result-value.green { color: #4ADE80; }
+        .qc-cta {
+            margin-top: 24px;
+            padding: 20px;
+            background: rgba(251,191,36,0.06);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .qc-cta p { font-size: 13px; color: #8C8880; margin-bottom: 14px; line-height: 1.5; }
+        .qc-cta a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #FBBF24;
+            color: #111;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .qc-cta a:hover { background: #F59E0B; }
+        .qc-error {
+            display: none;
+            padding: 12px 16px;
+            background: rgba(248,113,113,0.08);
+            border: 1px solid rgba(248,113,113,0.2);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #F87171;
+            margin-top: 10px;
+        }
+        .qc-limit-note {
+            font-size: 11px;
+            color: #3D3933;
+            margin-top: 10px;
+            text-align: right;
+        }
+        @media (max-width: 600px) {
+            .qc-input-row { flex-direction: column; }
+            .qc-result-label { min-width: 140px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -361,6 +602,101 @@
                 <div class="countdown-item"><div class="countdown-number" id="cd-m">--</div><div class="countdown-unit">Min</div></div>
                 <div class="countdown-item"><div class="countdown-number" id="cd-s">--</div><div class="countdown-unit">Sek</div></div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ELEMENT A — LEBENDER ZÄHLER ═══ -->
+<section class="live-counter-section">
+    <div class="container">
+        <div class="live-counter-inner">
+            <div class="lc-item">
+                <div class="lc-number" id="lc-analyzed">—</div>
+                <div class="lc-label"><strong>Chatbots analysiert</strong><br>mit echten Audit-Daten</div>
+            </div>
+            <div class="lc-item">
+                <div class="lc-number red" id="lc-compliant">0</div>
+                <div class="lc-label"><strong>EU AI Act compliant</strong><br>von allen getesteten Bots</div>
+            </div>
+            <div class="lc-item">
+                <div class="lc-number amber" id="lc-days">—</div>
+                <div class="lc-label"><strong>Tage bis zur Deadline</strong><br>2. August 2026</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ELEMENT B — PLATTFORM-SCORES ═══ -->
+<section class="platform-section" id="plattform-scores">
+    <div class="container">
+        <div class="section-label">Audit-Daten</div>
+        <div class="section-title">Was wir bisher gemessen haben.</div>
+        <table class="platform-table" id="platform-table">
+            <thead>
+                <tr>
+                    <th>Plattform</th>
+                    <th>Audits</th>
+                    <th>Ø Compliance</th>
+                    <th>Häufigstes Problem</th>
+                </tr>
+            </thead>
+            <tbody id="platform-tbody">
+                <!-- Wird via JS aus /data/stats.json befüllt -->
+                <tr>
+                    <td colspan="4" style="text-align:center;color:var(--warm-gray-400);font-size:13px;padding:24px">
+                        Daten werden geladen...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="platform-note">Daten aus echten Audits — kein Scoring ohne min. 3 Audits. Quick-Checks werden aggregiert aber nicht einzeln ausgewiesen. Firmen anonym.</p>
+    </div>
+</section>
+
+<!-- ═══ ELEMENT C — QUICK-CHECK ═══ -->
+<section class="quickcheck-section" id="quick-check">
+    <div class="container">
+        <div class="section-label">Kostenloser Quick-Check</div>
+        <div class="section-title">Teste deinen Chatbot — jetzt.</div>
+
+        <div class="qc-form-wrap">
+            <div class="qc-input-row">
+                <input type="url" class="qc-url-input" id="qc-url" placeholder="https://ihre-website.de" autocomplete="off">
+                <button class="qc-btn" id="qc-btn" onclick="runQuickCheck()">Kostenloser EU AI Act Quick-Check →</button>
+            </div>
+            <input type="email" class="qc-email-input" id="qc-email" placeholder="Email für Report (optional)">
+            <p class="qc-note">Oberflächlicher 3-Punkte-Check. Kein Login. Keine Datenweitergabe. Max. 20 Checks/Tag.</p>
+            <div class="qc-error" id="qc-error"></div>
+
+            <div class="qc-loading" id="qc-loading">
+                <div class="qc-spinner"></div>
+                <p id="qc-loading-text">Chatbot wird analysiert...</p>
+            </div>
+
+            <div class="qc-results" id="qc-results">
+                <div class="qc-result-row">
+                    <span class="qc-result-label">Erkannte Plattform</span>
+                    <span class="qc-result-value" id="qc-r-platform">—</span>
+                </div>
+                <div class="qc-result-row">
+                    <span class="qc-result-label">Art. 52 Transparenz</span>
+                    <span class="qc-result-value" id="qc-r-art52">—</span>
+                </div>
+                <div class="qc-result-row">
+                    <span class="qc-result-label">Geschätzte Risikostufe</span>
+                    <span class="qc-result-value" id="qc-r-risk">—</span>
+                </div>
+                <div class="qc-result-row">
+                    <span class="qc-result-label">Wichtigstes Problem</span>
+                    <span class="qc-result-value" id="qc-r-issue">—</span>
+                </div>
+
+                <div class="qc-cta">
+                    <p>Quick-Check erkannt? Für echte Compliance brauchen Sie einen vollständigen 48h-Audit mit konkretem Maßnahmenplan.</p>
+                    <a href="https://calendly.com/timvonsachs/ai-act-compliance-check-15-min" target="_blank">Vollständiger Audit — Termin in 15 Min buchen →</a>
+                </div>
+            </div>
+            <p class="qc-limit-note">Powered by Anima Compliance Intelligence</p>
         </div>
     </div>
 </section>
@@ -503,6 +839,172 @@
 
 <script>
 !function(){const dl=new Date('2026-08-02T00:00:00+02:00');function u(){const n=new Date,d=dl-n;if(d<=0)return;const dd=Math.floor(d/864e5),hh=Math.floor(d%864e5/36e5),mm=Math.floor(d%36e5/6e4),ss=Math.floor(d%6e4/1e3);document.getElementById('cd-d').textContent=dd;document.getElementById('cd-h').textContent=String(hh).padStart(2,'0');document.getElementById('cd-m').textContent=String(mm).padStart(2,'0');document.getElementById('cd-s').textContent=String(ss).padStart(2,'0')}u();setInterval(u,1e3)}();
+</script>
+
+<script>
+// ═══ ELEMENT A+B — Stats aus /data/stats.json laden ═══
+(async function loadStats() {
+  try {
+    const r = await fetch('/data/stats.json?' + Date.now());
+    if (!r.ok) throw new Error('stats.json not found');
+    const s = await r.json();
+
+    // Element A — Zähler befüllen
+    const analyzed = (s.totalAnalyzed || 0);
+    document.getElementById('lc-analyzed').textContent = analyzed;
+    document.getElementById('lc-compliant').textContent = s.compliantCount || 0;
+    
+    // Tage bis Deadline dynamisch berechnen (nicht aus stats.json — sonst veraltet)
+    const deadline = new Date('2026-08-02T00:00:00+02:00');
+    const daysLeft = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
+    document.getElementById('lc-days').textContent = daysLeft;
+
+    // Element B — Plattform-Tabelle
+    const tbody = document.getElementById('platform-tbody');
+    if (s.platformTable && s.platformTable.length > 0) {
+      tbody.innerHTML = '';
+      s.platformTable.forEach(p => {
+        const hasScore = p.avgScore !== null;
+        const scoreClass = hasScore 
+          ? (parseFloat(p.avgScore) >= 3 ? 'mid' : 'low')
+          : 'pending';
+        const scoreText = hasScore ? p.avgScore : 'Daten werden erhoben';
+        
+        tbody.innerHTML += `
+          <tr>
+            <td class="platform-name">${p.name}</td>
+            <td>${p.audits}</td>
+            <td><span class="score-badge ${scoreClass}">${scoreText}</span></td>
+            <td class="issue-tag">${p.topIssue || '—'}</td>
+          </tr>`;
+      });
+    } else {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--warm-gray-400);font-size:13px;padding:24px">Erste Audits laufen — Daten erscheinen sobald min. 1 Plattform vollständig ist.</td></tr>';
+    }
+  } catch (e) {
+    // Fallback: Tage trotzdem anzeigen
+    const deadline = new Date('2026-08-02T00:00:00+02:00');
+    const daysLeft = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
+    document.getElementById('lc-days').textContent = daysLeft;
+    document.getElementById('lc-analyzed').textContent = '2';
+    
+    // Hardcoded-Fallback Tabelle solange stats.json leer/nicht vorhanden
+    const tbody = document.getElementById('platform-tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td class="platform-name">Intercom</td>
+        <td>1</td>
+        <td><span class="score-badge pending">Daten werden erhoben</span></td>
+        <td class="issue-tag">Eskalationspflicht</td>
+      </tr>
+      <tr>
+        <td class="platform-name">HubSpot</td>
+        <td>1</td>
+        <td><span class="score-badge pending">Daten werden erhoben</span></td>
+        <td class="issue-tag">Art. 52 Transparenz</td>
+      </tr>`;
+  }
+})();
+
+// ═══ ELEMENT C — Quick-Check ═══
+async function runQuickCheck() {
+  const urlInput = document.getElementById('qc-url');
+  const emailInput = document.getElementById('qc-email');
+  const btn = document.getElementById('qc-btn');
+  const loading = document.getElementById('qc-loading');
+  const results = document.getElementById('qc-results');
+  const errorEl = document.getElementById('qc-error');
+  
+  const url = urlInput.value.trim();
+  const email = emailInput.value.trim();
+  
+  if (!url || !url.includes('.')) {
+    errorEl.textContent = 'Bitte geben Sie eine gültige URL ein.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  
+  // UI: Start
+  btn.disabled = true;
+  errorEl.style.display = 'none';
+  results.style.display = 'none';
+  loading.style.display = 'block';
+  
+  const loadingMsgs = [
+    'Chatbot wird analysiert...',
+    'Plattform wird erkannt...',
+    'EU AI Act Checks laufen...',
+    'Risikostufe wird berechnet...'
+  ];
+  let msgIdx = 0;
+  const loadingTimer = setInterval(() => {
+    msgIdx = (msgIdx + 1) % loadingMsgs.length;
+    document.getElementById('qc-loading-text').textContent = loadingMsgs[msgIdx];
+  }, 2500);
+  
+  try {
+    const response = await fetch('/api/quickcheck', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, email: email || undefined })
+    });
+    
+    clearInterval(loadingTimer);
+    loading.style.display = 'none';
+    
+    if (!response.ok) {
+      const err = await response.json();
+      if (response.status === 429) {
+        errorEl.textContent = err.error || 'Tageslimit erreicht. Bitte morgen wieder versuchen.';
+      } else {
+        errorEl.textContent = err.error || 'Analyse fehlgeschlagen. Bitte erneut versuchen.';
+      }
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      return;
+    }
+    
+    const data = await response.json();
+    
+    // Ergebnisse befüllen
+    document.getElementById('qc-r-platform').textContent = data.platform || 'Nicht erkannt';
+    
+    const art52El = document.getElementById('qc-r-art52');
+    art52El.textContent = data.article52 === 'Vorhanden' 
+      ? 'Vorhanden' 
+      : data.article52 === 'Fehlt' ? 'Fehlt ✕' : 'Unklar';
+    art52El.className = 'qc-result-value ' + 
+      (data.article52 === 'Vorhanden' ? 'green' : data.article52 === 'Fehlt' ? 'red' : 'amber');
+    
+    const riskEl = document.getElementById('qc-r-risk');
+    riskEl.textContent = data.riskLevel || 'Mittel';
+    riskEl.className = 'qc-result-value ' + 
+      (data.riskLevel === 'Hoch' ? 'red' : data.riskLevel === 'Niedrig' ? 'green' : 'amber');
+    
+    document.getElementById('qc-r-issue').textContent = data.topIssue || 'Art. 52 Transparenz';
+    
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    // Zähler lokal erhöhen (optimistic)
+    const analyzedEl = document.getElementById('lc-analyzed');
+    const current = parseInt(analyzedEl.textContent) || 0;
+    analyzedEl.textContent = current + 1;
+    
+  } catch (e) {
+    clearInterval(loadingTimer);
+    loading.style.display = 'none';
+    errorEl.textContent = 'Verbindung fehlgeschlagen. Bitte erneut versuchen.';
+    errorEl.style.display = 'block';
+  }
+  
+  btn.disabled = false;
+}
+
+// Enter-Taste im URL-Feld
+document.getElementById('qc-url').addEventListener('keypress', e => {
+  if (e.key === 'Enter') runQuickCheck();
+});
 </script>
 </body>
 </html>

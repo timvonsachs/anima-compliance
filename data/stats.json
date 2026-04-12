@@ -1,0 +1,22 @@
+{
+  "generated": "2026-04-12T07:48:29.607Z",
+  "totalAnalyzed": 2,
+  "totalAudits": 2,
+  "totalQuickchecks": 0,
+  "daysLeft": 112,
+  "compliantCount": 0,
+  "platformTable": [
+    {
+      "name": "Intercom",
+      "audits": 1,
+      "avgScore": null,
+      "topIssue": "Eskalationspflicht"
+    },
+    {
+      "name": "HubSpot",
+      "audits": 1,
+      "avgScore": null,
+      "topIssue": "Art. 52 Transparenz"
+    }
+  ]
+}
