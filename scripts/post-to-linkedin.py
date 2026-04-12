@@ -11,7 +11,7 @@ from pathlib import Path
 from datetime import date
 
 BASE = Path(__file__).parent.parent
-COUNTDOWN_DIR = BASE / "wiki-mirror" / "content" / "countdown"
+COUNTDOWN_DIR = Path.home() / "wiki-mirror" / "content" / "countdown"
 
 def extract_post_text(md_content):
     """Extrahiert den Post-Text zwischen ## Post-Text und ## Kontext."""
