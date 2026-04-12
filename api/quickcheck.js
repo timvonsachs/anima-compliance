@@ -3,10 +3,27 @@
 // Rate Limit: 20 Checks/Tag via KV-Store (Vercel KV oder file-basiert)
 
 import Anthropic from '@anthropic-ai/sdk';
-import { kv } from '@vercel/kv';
 
-const RATE_LIMIT_KEY = 'quickcheck_count_' + new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+// Rate-Limit: In-Memory für den Serverless-Prozess + Edge Config Fallback
+// Da Vercel Functions keinen shared state haben, nutzen wir eine einfache
+// IP-basierte In-Memory Map die bei Kaltstart resettet (akzeptabel für MVP)
+// Für Production: Vercel KV oder Upstash Redis
+
 const DAILY_LIMIT = 20;
+let requestCount = 0;
+let requestDate = new Date().toISOString().slice(0, 10);
+
+function checkRateLimit() {
+  const today = new Date().toISOString().slice(0, 10);
+  if (today !== requestDate) {
+    // Neuer Tag: Reset
+    requestDate = today;
+    requestCount = 0;
+  }
+  if (requestCount >= DAILY_LIMIT) return false;
+  requestCount++;
+  return true;
+}
 
 export const config = {
   api: {
@@ -33,18 +50,11 @@ export default async function handler(req, res) {
   if (!cleanUrl.startsWith('http')) cleanUrl = 'https://' + cleanUrl;
 
   // Rate Limit prüfen
-  try {
-    const count = (await kv.get(RATE_LIMIT_KEY)) || 0;
-    if (count >= DAILY_LIMIT) {
-      return res.status(429).json({ 
-        error: 'Tageslimit erreicht. Bitte morgen wieder versuchen oder direkt Termin buchen.',
-        limitReached: true
-      });
-    }
-    await kv.set(RATE_LIMIT_KEY, count + 1, { ex: 86400 }); // 24h TTL
-  } catch (kvError) {
-    // KV nicht verfügbar — weiter ohne Rate Limit (fail open)
-    console.warn('KV store not available:', kvError.message);
+  if (!checkRateLimit()) {
+    return res.status(429).json({ 
+      error: 'Tageslimit erreicht. Bitte morgen wieder versuchen oder direkt Termin buchen.',
+      limitReached: true
+    });
   }
 
   // Anthropic API aufrufen
