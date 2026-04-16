@@ -94,6 +94,9 @@
             font-size: 17px; color: var(--warm-gray-600); max-width: 540px;
             margin-bottom: 36px; line-height: 1.75;
         }
+        .independence-block { margin-top: 32px; margin-bottom: 24px; max-width: 680px; }
+        .independence-lead { font-size: 18px; font-weight: 700; color: var(--warm-gray-700); line-height: 1.45; margin-bottom: 8px; }
+        .independence-body { font-size: 15px; color: var(--warm-gray-600); line-height: 1.7; }
         .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
         .btn-primary {
@@ -268,6 +271,36 @@
         .check-badge.g { background: var(--green-bg); color: var(--green); }
         .check-badge.a { background: var(--amber-bg); color: var(--amber); }
 
+        /* BOT TYPES */
+        .bot-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .bot-type-card {
+            background: var(--white);
+            border: 1px solid var(--warm-gray-200);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 190px;
+            position: relative;
+        }
+        .bot-type-badge {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            padding: 3px 7px;
+            border-radius: 4px;
+            background: var(--warm-gray-100);
+            color: var(--warm-gray-600);
+        }
+        .bot-type-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; padding-right: 88px; line-height: 1.35; }
+        .bot-type-card p { font-size: 13px; color: var(--warm-gray-600); line-height: 1.65; }
+
         /* TIMELINE */
         .timeline { position: relative; margin: 28px 0; padding-left: 40px; }
         .timeline::before {
@@ -361,14 +394,21 @@
         @media (max-width: 768px) {
             .hero { padding: 48px 0 32px; }
             .nav-links { display: none; }
+            .independence-lead { font-size: 17px; }
+            .independence-body { font-size: 14px; }
             .audit-showcase { padding: 24px; }
             .audit-bar-row { grid-template-columns: 72px 1fr 40px; }
             .pricing-grid { grid-template-columns: 1fr; }
             .pricing-card.featured { order: -1; transform: none; }
             .puffer-row { grid-template-columns: 1fr; gap: 4px; }
+            .bot-types-grid { grid-template-columns: 1fr; }
             .countdown-inner { gap: 16px; }
             .countdown-item { padding: 10px 14px; min-width: 60px; }
             .countdown-number { font-size: 22px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .bot-types-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
         /* ═══ ELEMENT A — LEBENDER ZÄHLER ═══ */
@@ -636,6 +676,10 @@
         <h1>Ihr Chatbot wird ab August <em>illegal.</em></h1>
         <p class="hero-sub">Für Chatbots gelten ab 2. August 2026 verbindlich die Transparenzpflicht (Artikel 50) und die AI-Literacy-Pflicht (Artikel 4). Verstöße können mit bis zu €15 Mio. oder 3% Jahresumsatz geahndet werden. Wir machen Sie in 2 Wochen readiness-fähig.</p>
         <p style="font-size:13px;color:var(--warm-gray-500);max-width:760px;margin-top:-20px;margin-bottom:28px">Wichtig: Für High-Risk-Systeme wurden Verschiebungen auf 2027/2028 vorgeschlagen. Diese sind Stand April 2026 noch nicht final beschlossen. Bis zum Abschluss der EU-Verhandlungen bleibt der 2. August 2026 das rechtlich bindende Datum.</p>
+        <div class="independence-block">
+            <p class="independence-lead">Ihr Chatbot-Anbieter sagt Ihnen alles passt. Für Ihre Legal-Abteilung reicht das nicht.</p>
+            <p class="independence-body">Tidio, Gorgias, Intercom, Qualimero, Custom Builds — alle behaupten Compliance. Aber der Anbieter ist nie sein eigener Prüfer. Wir machen den unabhängigen Third-Party-Review den Ihre Geschäftsführung braucht.</p>
+        </div>
         <div class="hero-actions">
             <a href="#lead-form" class="btn-primary">Readiness Assessment anfragen →</a>
             <a href="#pricing" class="btn-ghost">Pakete ansehen</a>
@@ -772,7 +816,7 @@
 <section class="section" id="problem">
     <div class="container">
         <div class="section-label">Das Problem</div>
-        <div class="section-title">Die meisten Unternehmen wissen nicht, dass ihr Chatbot falsch liegt.</div>
+        <div class="section-title">Die meisten Unternehmen vertrauen auf die Aussage ihres Chatbot-Anbieters. Das ist der Fehler.</div>
         <div class="stats-row">
             <div class="stat-card"><div class="stat-number red">20–40%</div><div class="stat-desc">Fehlerquote bei AI-Chatbots in Produktion. Falsche Produktinfos, erfundene Policies, halluzinierte Fakten.</div><div class="stat-source">Gartner, Statista 2025</div></div>
             <div class="stat-card"><div class="stat-number amber">62%</div><div class="stat-desc">Accuracy bei CHECK24 und Otto — getestet mit unserem Audit-Tool. Ein Drittel aller Antworten ist falsch.</div><div class="stat-source">Anima Quick Audit, April 2026</div></div>
@@ -798,6 +842,35 @@
                 <div class="audit-bar-row"><div class="audit-bar-label">Medical</div><div class="audit-bar-track"><div class="audit-bar-fill bad" style="width:30%"></div></div><div class="audit-bar-val bad">30%</div></div>
             </div>
             <p class="audit-footnote">Quick Audits an CHECK24 und Otto, April 2026. Vollständiger 50-Fragen-Audit auf Anfrage.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--warm-gray-200)">
+    <div class="container">
+        <div class="section-title" style="margin-bottom:10px">Für welchen Bot-Typ ist Anima relevant?</div>
+        <p style="font-size:15px;color:var(--warm-gray-500);margin-bottom:28px">Wir auditieren unabhängig — egal welchen Chatbot Sie einsetzen.</p>
+        <div class="bot-types-grid">
+            <div class="bot-type-card">
+                <span class="bot-type-badge">Am häufigsten</span>
+                <h4>Standard-Plattformen</h4>
+                <p>Tidio, Gorgias, Intercom, Zendesk Answer Bot, Freshchat. Der Anbieter liefert Standard-Compliance-Statements, aber keine auf Ihren Use-Case zugeschnittene Prüfung.</p>
+            </div>
+            <div class="bot-type-card">
+                <span class="bot-type-badge">Für Enterprise</span>
+                <h4>Done-for-you Lösungen</h4>
+                <p>Qualimero, Moin.ai, Aleph Alpha Chatbots. Diese Anbieter positionieren sich bereits compliance-orientiert — trotzdem brauchen Legal-Abteilungen unabhängige Bestätigung.</p>
+            </div>
+            <div class="bot-type-card">
+                <span class="bot-type-badge">Höchster Aufwand</span>
+                <h4>Custom Builds</h4>
+                <p>Eigene Entwicklungen auf OpenAI, Anthropic oder Open-Source-Modellen. Höchstes Risiko weil keine Standard-Compliance mitgeliefert wird.</p>
+            </div>
+            <div class="bot-type-card">
+                <span class="bot-type-badge">Komplexe Lage</span>
+                <h4>Voice Bots und Telefon-AI</h4>
+                <p>Automatisierte Telefon-Systeme auf Basis von AI. Unter AI Act Artikel 50 und zusätzlich unter DSGVO-Sonderregeln für Sprachverarbeitung.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -868,13 +941,13 @@
     <div class="container">
         <div class="section-label">FAQ</div>
         <div class="section-title">Häufige Fragen.</div>
+        <div class="faq-item"><div class="faq-q">Mein Chatbot-Anbieter sagt der Bot ist bereits compliant. Warum brauche ich einen Audit?</div><div class="faq-a">Weil kein Anbieter sein eigener Prüfer sein kann. Für Ihre Geschäftsführung und Ihre Legal-Abteilung ist die Aussage des Anbieters rechtlich nicht ausreichend. Unabhängige Prüfung ist Standard bei Audits — genauso wie der Steuerberater nicht die Bilanz prüft die er selbst erstellt hat. Wir sind der unabhängige Prüfer den Sie für interne und externe Nachweise brauchen.</div></div>
         <div class="faq-item"><div class="faq-q">Ist mein E-Commerce Chatbot High Risk?</div><div class="faq-a">Wahrscheinlich nicht. Normale Support-Chatbots sind Limited Risk (Artikel 50). High Risk gilt bei medizinischer Beratung, Kreditentscheidungen oder HR-Screening.</div></div>
         <div class="faq-item"><div class="faq-q">Wurde die Deadline nicht verschoben?</div><div class="faq-a">Teilweise. Die High-Risk-Regeln für KI in Medizin, HR und Kreditwesen wurden auf Dezember 2027 verschoben. Die Transparenzpflichten für Chatbots (Artikel 50) und die AI-Literacy-Pflicht (Artikel 4) bleiben bei August 2026. Und solange die EU-Verhandlungen nicht abgeschlossen sind, ist der 2. August 2026 das rechtlich bindende Datum für alle Pflichten.</div></div>
         <div class="faq-item"><div class="faq-q">Was passiert wenn ich nichts tue?</div><div class="faq-a">Ab August 2026 drohen Bußgelder bis €15 Mio. oder 3% des weltweiten Jahresumsatzes.</div></div>
         <div class="faq-item"><div class="faq-q">Wie lange dauert das Assessment?</div><div class="faq-a">2 Wochen. Knowledge Base hochladen, 50 Fragen testen, PDF-Report mit Ergebnissen und Empfehlungen.</div></div>
         <div class="faq-item"><div class="faq-q">Was ist der Unterschied zwischen Basis und Premium?</div><div class="faq-a">Basis ist für Firmen die den Report selbst umsetzen und keine interne Legal-Diskussion brauchen. Premium ist für Firmen wo Geschäftsführung oder Legal einen Third-Party-Review-Dokument verlangen und wo ein Re-Audit nach Fix-Implementation für interne Sicherheit wichtig ist. Faustregel: Ab 20 Mio € Jahresumsatz meistens Premium.</div></div>
         <div class="faq-item"><div class="faq-q">Muss ich meinen Chatbot-Anbieter wechseln?</div><div class="faq-a">Nein. Anima funktioniert mit jedem Chatbot — Tidio, Gorgias, Zendesk, Intercom, Custom Builds.</div></div>
-        <div class="faq-item"><div class="faq-q">Warum nicht meinen Anbieter fragen?</div><div class="faq-a">Weil Ihr Anbieter Deflection Rate misst — nicht Accuracy. Unabhängige Prüfung braucht einen unabhängigen Prüfer.</div></div>
     </div>
 </section>
 
