@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EU AI Act Compliance für Chatbots | Anima</title>
-    <meta name="description" content="EU AI Act Deadline August 2026. Ist Ihr Chatbot compliant? Readiness Assessment in 2 Wochen ab €5.000 oder White-Label-Fulfillment für Agenturen.">
+    <meta name="description" content="EU AI Act Deadline August 2026. Quick Check kostenlos, Basis Audit ab €500, Premium Readiness ab €2.500.">
     <link rel="stylesheet" href="/fonts/fonts.css">
     <style>
         :root {
@@ -129,6 +129,54 @@
             color: var(--red); line-height: 1;
         }
         .countdown-unit { font-size: 9px; color: var(--warm-gray-400); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+        .puffer-box {
+            margin-top: 20px; padding: 18px; border-radius: 10px;
+            border: 1px solid var(--red-border); background: var(--white);
+            width: 100%;
+        }
+        .puffer-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+        .puffer-row {
+            display: grid; grid-template-columns: 1fr auto auto; gap: 12px;
+            padding: 8px 0; border-bottom: 1px solid var(--warm-gray-100); align-items: center;
+        }
+        .puffer-row:last-child { border-bottom: none; }
+        .puffer-label { font-size: 12px; color: var(--warm-gray-600); }
+        .puffer-value { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--warm-gray-700); }
+        .puffer-buffer { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; }
+        .puffer-buffer.green { color: var(--green); }
+        .puffer-buffer.yellow { color: var(--amber); }
+        .puffer-buffer.red { color: var(--red); }
+        .puffer-note { margin-top: 10px; font-size: 12px; color: var(--warm-gray-500); }
+
+        .scarcity-section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--warm-gray-200);
+            background: var(--warm-gray-50);
+        }
+        .scarcity-card {
+            background: var(--white);
+            border: 1px solid var(--warm-gray-200);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .scarcity-head {
+            display: flex; justify-content: space-between; align-items: baseline;
+            gap: 12px; margin-bottom: 12px;
+        }
+        .scarcity-total { font-size: 13px; color: var(--warm-gray-500); }
+        .scarcity-remaining { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; }
+        .scarcity-remaining.red { color: var(--red); }
+        .scarcity-remaining.amber { color: var(--amber); }
+        .scarcity-remaining.green { color: var(--green); }
+        .scarcity-bar-track {
+            height: 14px; border-radius: 999px; overflow: hidden;
+            background: var(--warm-gray-100); border: 1px solid var(--warm-gray-200);
+            margin-bottom: 12px;
+        }
+        .scarcity-bar-fill { height: 100%; background: var(--green); width: 0; transition: width .3s ease; }
+        .scarcity-bar-fill.red { background: var(--red); }
+        .scarcity-bar-fill.amber { background: var(--amber); }
+        .scarcity-text { font-size: 13px; color: var(--warm-gray-600); }
 
         /* SECTIONS */
         .section { padding: 64px 0; }
@@ -239,13 +287,13 @@
         .tl-desc { font-size: 13px; color: var(--warm-gray-500); }
 
         /* PRICING */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 16px; align-items: stretch; }
         .pricing-card {
             background: var(--white); border: 1px solid var(--warm-gray-200);
             border-radius: 12px; padding: 32px; position: relative; transition: all 0.2s;
         }
         .pricing-card:hover { border-color: var(--warm-gray-300); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
-        .pricing-card.featured { border: 2px solid var(--green); }
+        .pricing-card.featured { border: 2px solid var(--green); transform: scale(1.02); }
         .pricing-pop {
             position: absolute; top: -10px; left: 20px;
             background: var(--green); color: white; font-size: 10px; font-weight: 700;
@@ -296,12 +344,13 @@
         .lead-form-wrap p { font-size: 14px; color: var(--warm-gray-500); margin-bottom: 18px; }
         .lead-form { display: grid; gap: 12px; }
         .lead-form label { font-size: 12px; color: var(--warm-gray-600); font-weight: 600; }
-        .lead-form input {
+        .lead-form input, .lead-form select {
             width: 100%; border: 1px solid var(--warm-gray-300); border-radius: 8px;
             padding: 12px; font-size: 14px; color: var(--warm-gray-900); background: var(--white);
         }
-        .lead-form input:focus { outline: none; border-color: var(--warm-gray-700); }
+        .lead-form input:focus, .lead-form select:focus { outline: none; border-color: var(--warm-gray-700); }
         .lead-form button { border: 0; cursor: pointer; margin-top: 4px; }
+        .lead-hint { font-size: 11px; color: var(--warm-gray-500); margin-top: -8px; }
 
         /* FOOTER */
         footer { border-top: 1px solid var(--warm-gray-200); padding: 32px 0; text-align: center; }
@@ -315,6 +364,8 @@
             .audit-showcase { padding: 24px; }
             .audit-bar-row { grid-template-columns: 72px 1fr 40px; }
             .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { order: -1; transform: none; }
+            .puffer-row { grid-template-columns: 1fr; gap: 4px; }
             .countdown-inner { gap: 16px; }
             .countdown-item { padding: 10px 14px; min-width: 60px; }
             .countdown-number { font-size: 22px; }
@@ -603,6 +654,41 @@
                 <div class="countdown-item"><div class="countdown-number" id="cd-s">--</div><div class="countdown-unit">Sek</div></div>
             </div>
         </div>
+        <div class="puffer-box">
+            <div class="puffer-title">Ihre realistische Umsetzungszeit</div>
+            <div class="puffer-row">
+                <div class="puffer-label">Bei Beauftragung heute</div>
+                <div class="puffer-value"><span id="puffer-days-now">—</span> Tage bis Deadline</div>
+                <div class="puffer-buffer" id="puffer-buffer-now">Ihr Puffer: —</div>
+            </div>
+            <div class="puffer-row">
+                <div class="puffer-label">Bei Beauftragung in 2 Wochen</div>
+                <div class="puffer-value"><span id="puffer-days-14">—</span> Tage bis Deadline</div>
+                <div class="puffer-buffer" id="puffer-buffer-14">Ihr Puffer: —</div>
+            </div>
+            <div class="puffer-row">
+                <div class="puffer-label">Bei Beauftragung in 4 Wochen</div>
+                <div class="puffer-value"><span id="puffer-days-28">—</span> Tage bis Deadline</div>
+                <div class="puffer-buffer" id="puffer-buffer-28">Ihr Puffer: —</div>
+            </div>
+            <p class="puffer-note">Realistische Umsetzung bei typischem Bot: 45-60 Tage. Kalkulation hier mit 52 Tagen.</p>
+            <p class="puffer-note">In 2 Wochen sind es nur noch <strong id="puffer-note-14">—</strong> Tage Puffer. In 4 Wochen: <strong id="puffer-note-28">—</strong>.</p>
+        </div>
+    </div>
+</section>
+
+<section class="scarcity-section">
+    <div class="container">
+        <div class="scarcity-card">
+            <div class="section-label">Kapazität</div>
+            <div class="section-title" style="margin-bottom:18px">Verfügbare Audit-Slots bis 2. August</div>
+            <div class="scarcity-head">
+                <div class="scarcity-total">Gesamt: <span id="slots-total">100</span> Audits · Bereits gebucht: <span id="slots-booked">0</span></div>
+                <div class="scarcity-remaining" id="slots-remaining">100 frei</div>
+            </div>
+            <div class="scarcity-bar-track"><div class="scarcity-bar-fill" id="slots-bar-fill"></div></div>
+            <p class="scarcity-text">Jeder Audit blockiert 48h Kapazität. Bei 100 Audits bis Deadline: letzter Slot ist am 22. Juli.</p>
+        </div>
     </div>
 </section>
 
@@ -631,25 +717,7 @@
     <div class="container">
         <div class="section-label">Audit-Daten</div>
         <div class="section-title">Was wir bisher gemessen haben.</div>
-        <table class="platform-table" id="platform-table">
-            <thead>
-                <tr>
-                    <th>Plattform</th>
-                    <th>Audits</th>
-                    <th>Ø Compliance</th>
-                    <th>Häufigstes Problem</th>
-                </tr>
-            </thead>
-            <tbody id="platform-tbody">
-                <!-- Wird via JS aus /data/stats.json befüllt -->
-                <tr>
-                    <td colspan="4" style="text-align:center;color:var(--warm-gray-400);font-size:13px;padding:24px">
-                        Daten werden geladen...
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="platform-note">Daten aus echten Audits — kein Scoring ohne min. 3 Audits. Quick-Checks werden aggregiert aber nicht einzeln ausgewiesen. Firmen anonym.</p>
+        <p style="font-size:14px;color:var(--warm-gray-600);max-width:760px">Stand April 2026: 2 Quick Audits durchgeführt (CHECK24, Otto). Vollständige Datentabelle ab 10 Basis Audits (geplant Mai 2026).</p>
     </div>
 </section>
 
@@ -679,7 +747,7 @@
                     <span class="qc-result-value" id="qc-r-platform">—</span>
                 </div>
                 <div class="qc-result-row">
-                    <span class="qc-result-label">Art. 52 Transparenz</span>
+                    <span class="qc-result-label">Art. 50 Transparenz</span>
                     <span class="qc-result-value" id="qc-r-art52">—</span>
                 </div>
                 <div class="qc-result-row">
@@ -766,25 +834,32 @@
 <section class="section" style="border-top:1px solid var(--warm-gray-200)" id="pricing">
     <div class="container">
         <div class="section-label">Pakete</div>
-        <div class="section-title">Zwei Deals für schnelle EU AI Act Readiness.</div>
+        <div class="section-title">Wählen Sie das passende Audit-Paket.</div>
         <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-name">Quick Check</div>
+                <div class="pricing-price">€0</div><div class="pricing-period">Kostenlos</div>
+                <div class="pricing-desc"><strong>Kostenloser Quick Check</strong><br>30 Sekunden. Kein Login.</div>
+                <ul class="pricing-features"><li>Automatischer Scan auf Art. 50 Transparenzhinweis</li><li>Plattform-Erkennung (Tidio, Gorgias, Intercom, Custom)</li><li>Erste Risiko-Einschätzung</li><li>1-Seite Kurz-Report</li></ul>
+                <a href="#quick-check" class="pricing-btn light">Jetzt testen →</a>
+            </div>
             <div class="pricing-card featured">
-                <div class="pricing-pop">Deal 1</div>
-                <div class="pricing-name">Mittelstand Assessment</div>
-                <div class="pricing-price">€5.000</div><div class="pricing-period">Einmalig · Lieferzeit 2 Wochen</div>
-                <div class="pricing-desc">EU AI Act Readiness Assessment mit Ground-Truth-Verification, Compliance-Dokumentation und Management-Summary.</div>
-                <ul class="pricing-features"><li>Ground-Truth-Verification pro Themenkategorie</li><li>Risikoklassifizierung nach EU AI Act</li><li>Compliance-Dokumentation für Management und Legal</li><li>Management-Summary mit priorisierten Maßnahmen</li><li>Konkreter 2-Wochen-Umsetzungsplan</li></ul>
-                <a href="#lead-form" class="pricing-btn dark">Deal 1 anfragen →</a>
+                <div class="pricing-pop">Meist gewählt</div>
+                <div class="pricing-name">Basis</div>
+                <div class="pricing-price">€500</div><div class="pricing-period">48h Turnaround</div>
+                <div class="pricing-desc"><strong>Basis Audit</strong><br>48h Turnaround. PDF-Report. Selbst-Umsetzung.</div>
+                <ul class="pricing-features"><li>20-30 Seiten PDF-Report</li><li>Ampel über 5 Bereiche (Accuracy, Art. 50, Risiko, Datenschutz, Human Escalation)</li><li>Chatbot-Test mit 20 standardisierten Fragen</li><li>To-Do-Liste mit Zeitaufwand pro Fix</li><li>Ampel pro Fix: Self-Fix (10 Min) vs Anwalt nötig</li><li>48h Lieferzeit</li></ul>
+                <a href="#lead-form" class="pricing-btn dark js-package-cta" data-package="Basis">Audit beauftragen →</a>
             </div>
             <div class="pricing-card">
-                <div class="pricing-name">White-Label Partner</div>
-                <div class="pricing-price">€3.000–5.000</div><div class="pricing-period">Für die ersten 2–3 Audits</div>
-                <div class="pricing-desc">Für Digitalagenturen und Beratungen mit AI-Kunden: Wir sind Ihr Audit-Fulfillment im Hintergrund.</div>
-                <ul class="pricing-features"><li>White-Label Fulfillment für Partnerprojekte</li><li>2–3 Audits im Partnerpaket</li><li>Lieferung unter Ihrer Marke möglich</li><li>Schneller Start ohne eigenes Audit-Tool</li><li>Skalierbar für weitere Kunden</li></ul>
-                <a href="#lead-form" class="pricing-btn light">Deal 2 anfragen</a>
+                <div class="pricing-name">Premium</div>
+                <div class="pricing-price">€2.500</div><div class="pricing-period">Priority-Queue: 24h</div>
+                <div class="pricing-desc"><strong>Premium Readiness</strong><br>Für Unternehmen die Sicherheit für Geschäftsführung und Legal brauchen.</div>
+                <ul class="pricing-features"><li>Alles aus Basis Audit</li><li>1h Video-Call mit Tim zur Report-Erklärung</li><li>Re-Audit nach Fix-Implementation (innerhalb 30 Tagen)</li><li>Third-Party-Review-Dokument (für Legal/Vorstand)</li><li>30 Tage Support bei Rückfragen per Email</li><li>Priority-Queue: 24h statt 48h</li></ul>
+                <a href="#lead-form" class="pricing-btn light js-package-cta" data-package="Premium">Premium anfragen →</a>
             </div>
         </div>
-        <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--warm-gray-400)">Beide Deals sind auf schnelle Umsetzung ausgelegt: klare Deliverables, feste Timelines, direkte Entscheidungsgrundlage.</p>
+        <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--warm-gray-400)">Alle drei Pakete sind auf schnelle Umsetzung ausgelegt: klare Deliverables, feste Timelines, direkte Entscheidungsgrundlage.</p>
         <p style="text-align:center;margin-top:10px;font-size:12px;color:var(--warm-gray-500)">Jeder führende Compliance-Berater empfiehlt: Jetzt vorbereiten, nicht abwarten. Abwarten wird teurer als Handeln.</p>
     </div>
 </section>
@@ -797,6 +872,7 @@
         <div class="faq-item"><div class="faq-q">Wurde die Deadline nicht verschoben?</div><div class="faq-a">Teilweise. Die High-Risk-Regeln für KI in Medizin, HR und Kreditwesen wurden auf Dezember 2027 verschoben. Die Transparenzpflichten für Chatbots (Artikel 50) und die AI-Literacy-Pflicht (Artikel 4) bleiben bei August 2026. Und solange die EU-Verhandlungen nicht abgeschlossen sind, ist der 2. August 2026 das rechtlich bindende Datum für alle Pflichten.</div></div>
         <div class="faq-item"><div class="faq-q">Was passiert wenn ich nichts tue?</div><div class="faq-a">Ab August 2026 drohen Bußgelder bis €15 Mio. oder 3% des weltweiten Jahresumsatzes.</div></div>
         <div class="faq-item"><div class="faq-q">Wie lange dauert das Assessment?</div><div class="faq-a">2 Wochen. Knowledge Base hochladen, 50 Fragen testen, PDF-Report mit Ergebnissen und Empfehlungen.</div></div>
+        <div class="faq-item"><div class="faq-q">Was ist der Unterschied zwischen Basis und Premium?</div><div class="faq-a">Basis ist für Firmen die den Report selbst umsetzen und keine interne Legal-Diskussion brauchen. Premium ist für Firmen wo Geschäftsführung oder Legal einen Third-Party-Review-Dokument verlangen und wo ein Re-Audit nach Fix-Implementation für interne Sicherheit wichtig ist. Faustregel: Ab 20 Mio € Jahresumsatz meistens Premium.</div></div>
         <div class="faq-item"><div class="faq-q">Muss ich meinen Chatbot-Anbieter wechseln?</div><div class="faq-a">Nein. Anima funktioniert mit jedem Chatbot — Tidio, Gorgias, Zendesk, Intercom, Custom Builds.</div></div>
         <div class="faq-item"><div class="faq-q">Warum nicht meinen Anbieter fragen?</div><div class="faq-a">Weil Ihr Anbieter Deflection Rate misst — nicht Accuracy. Unabhängige Prüfung braucht einen unabhängigen Prüfer.</div></div>
     </div>
@@ -814,16 +890,43 @@
     <div class="container">
         <div class="lead-form-wrap">
             <h3>In 30 Sekunden anfragen</h3>
-            <p>Kein E-Mail-Pingpong: Name, Firma und Bot-URL eintragen — wir melden uns mit den nächsten Schritten.</p>
-            <form class="lead-form" action="https://formsubmit.co/timvonsachs@gmail.com" method="POST">
+            <p>Kein E-Mail-Pingpong: Einmal ausfüllen, wir melden uns mit den nächsten Schritten.</p>
+            <form class="lead-form" id="lead-form-main" action="https://formsubmit.co/timvonsachs@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Neue Anfrage über Landingpage">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://animacompliance.com/#lead-form">
                 <label for="lead-name">Name</label>
                 <input id="lead-name" name="Name" type="text" required>
                 <label for="lead-company">Firma</label>
                 <input id="lead-company" name="Firma" type="text" required>
+                <label for="lead-email">Email</label>
+                <input id="lead-email" name="Email" type="email" required>
+                <label for="lead-phone">Telefon</label>
+                <input id="lead-phone" name="Telefon" type="tel">
+                <p class="lead-hint">Optional, für schnellere Rückfragen.</p>
                 <label for="lead-bot-url">Bot-URL</label>
                 <input id="lead-bot-url" name="Bot-URL" type="url" placeholder="https://..." required>
+                <label for="lead-package">Paket</label>
+                <select id="lead-package" name="Paket" required>
+                    <option value="Quick">Quick</option>
+                    <option value="Basis">Basis</option>
+                    <option value="Premium">Premium</option>
+                </select>
+                <label for="lead-deadline">Wann müssen Sie fertig sein?</label>
+                <select id="lead-deadline" name="Deadline" required>
+                    <option value="Vor 15. Mai">Vor 15. Mai</option>
+                    <option value="Vor 15. Juni">Vor 15. Juni</option>
+                    <option value="Vor 15. Juli">Vor 15. Juli</option>
+                    <option value="Ist mir egal">Ist mir egal</option>
+                </select>
+                <label for="lead-revenue">Ihr Jahresumsatz</label>
+                <select id="lead-revenue" name="Jahresumsatz" required>
+                    <option value="< 1 Mio €">&lt; 1 Mio €</option>
+                    <option value="1-10 Mio €">1-10 Mio €</option>
+                    <option value="10-50 Mio €">10-50 Mio €</option>
+                    <option value="> 50 Mio €">&gt; 50 Mio €</option>
+                    <option value="Möchte ich nicht angeben">Möchte ich nicht angeben</option>
+                </select>
                 <button type="submit" class="btn-primary">Anfrage senden →</button>
             </form>
         </div>
@@ -833,78 +936,133 @@
 <footer>
     <div class="container">
         <p style="margin-bottom:4px"><a href="index.html" style="font-weight:600">Anima</a> — EU AI Act Compliance für Chatbots.</p>
-        <p>timvonsachs@gmail.com · <a href="https://anima-support.onrender.com/compare">Live Demo</a> · <a href="blog.html">Blog</a></p>
+        <p>timvonsachs@gmail.com · <a href="https://anima-support.onrender.com/compare">Live Demo</a> · <a href="blog.html">Blog</a> · <a href="partner.html">Für Agenturen: White-Label Partner →</a></p>
     </div>
 </footer>
 
 <script>
-!function(){const dl=new Date('2026-08-02T00:00:00+02:00');function u(){const n=new Date,d=dl-n;if(d<=0)return;const dd=Math.floor(d/864e5),hh=Math.floor(d%864e5/36e5),mm=Math.floor(d%36e5/6e4),ss=Math.floor(d%6e4/1e3);document.getElementById('cd-d').textContent=dd;document.getElementById('cd-h').textContent=String(hh).padStart(2,'0');document.getElementById('cd-m').textContent=String(mm).padStart(2,'0');document.getElementById('cd-s').textContent=String(ss).padStart(2,'0')}u();setInterval(u,1e3)}();
-</script>
+const ANIMA_CONFIG = {
+  deadlineIso: '2026-08-02T00:00:00Z',
+  realisticImplementationDays: 52,
+  totalAuditSlots: 100,
+  bookedAuditSlots: 0,
+  liveCounterAnalyzed: 2,
+  liveCounterCompliant: 0,
+  hermesWebhookUrl: 'https://hermes.animacompliance.com/webhooks/lead-score'
+};
 
-<script>
-// ═══ ELEMENT A+B — Stats aus /data/stats.json laden ═══
-(async function loadStats() {
-  try {
-    const r = await fetch('/data/stats.json?' + Date.now());
-    if (!r.ok) throw new Error('stats.json not found');
-    const s = await r.json();
+function pufferClass(days) {
+  if (days < 30) return 'red';
+  if (days <= 60) return 'yellow';
+  return 'green';
+}
 
-    // Element A — Zähler befüllen
-    const analyzed = (s.totalAnalyzed || 0);
-    document.getElementById('lc-analyzed').textContent = analyzed;
-    document.getElementById('lc-compliant').textContent = s.compliantCount || 0;
-    
-    // Tage bis Deadline dynamisch berechnen (nicht aus stats.json — sonst veraltet)
-    const deadline = new Date('2026-08-02T00:00:00+02:00');
-    const daysLeft = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
-    document.getElementById('lc-days').textContent = daysLeft;
+function renderPuffer(targetEl, value) {
+  targetEl.textContent = `Ihr Puffer: ${value} Tage`;
+  targetEl.classList.remove('green', 'yellow', 'red');
+  targetEl.classList.add('puffer-buffer', pufferClass(value));
+}
 
-    // Element B — Plattform-Tabelle
-    const tbody = document.getElementById('platform-tbody');
-    if (s.platformTable && s.platformTable.length > 0) {
-      tbody.innerHTML = '';
-      s.platformTable.forEach(p => {
-        const hasScore = p.avgScore !== null;
-        const scoreClass = hasScore 
-          ? (parseFloat(p.avgScore) >= 3 ? 'mid' : 'low')
-          : 'pending';
-        const scoreText = hasScore ? p.avgScore : 'Daten werden erhoben';
-        
-        tbody.innerHTML += `
-          <tr>
-            <td class="platform-name">${p.name}</td>
-            <td>${p.audits}</td>
-            <td><span class="score-badge ${scoreClass}">${scoreText}</span></td>
-            <td class="issue-tag">${p.topIssue || '—'}</td>
-          </tr>`;
-      });
-    } else {
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--warm-gray-400);font-size:13px;padding:24px">Erste Audits laufen — Daten erscheinen sobald min. 1 Plattform vollständig ist.</td></tr>';
-    }
-  } catch (e) {
-    // Fallback: Tage trotzdem anzeigen
-    const deadline = new Date('2026-08-02T00:00:00+02:00');
-    const daysLeft = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
-    document.getElementById('lc-days').textContent = daysLeft;
-    document.getElementById('lc-analyzed').textContent = '2';
-    
-    // Hardcoded-Fallback Tabelle solange stats.json leer/nicht vorhanden
-    const tbody = document.getElementById('platform-tbody');
-    tbody.innerHTML = `
-      <tr>
-        <td class="platform-name">Intercom</td>
-        <td>1</td>
-        <td><span class="score-badge pending">Daten werden erhoben</span></td>
-        <td class="issue-tag">Eskalationspflicht</td>
-      </tr>
-      <tr>
-        <td class="platform-name">HubSpot</td>
-        <td>1</td>
-        <td><span class="score-badge pending">Daten werden erhoben</span></td>
-        <td class="issue-tag">Art. 52 Transparenz</td>
-      </tr>`;
+function updateCountdownAndPuffer() {
+  const deadline = new Date(ANIMA_CONFIG.deadlineIso);
+  const now = new Date();
+  const msLeft = deadline - now;
+
+  if (msLeft <= 0) {
+    ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach((id) => { document.getElementById(id).textContent = '00'; });
+    return;
   }
-})();
+
+  const days = Math.floor(msLeft / 86400000);
+  const hours = Math.floor((msLeft % 86400000) / 3600000);
+  const mins = Math.floor((msLeft % 3600000) / 60000);
+  const secs = Math.floor((msLeft % 60000) / 1000);
+
+  document.getElementById('cd-d').textContent = String(days);
+  document.getElementById('cd-h').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-m').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cd-s').textContent = String(secs).padStart(2, '0');
+  document.getElementById('lc-days').textContent = String(days);
+
+  const daysNow = days;
+  const days14 = Math.max(daysNow - 14, 0);
+  const days28 = Math.max(daysNow - 28, 0);
+
+  const pufferNow = daysNow - ANIMA_CONFIG.realisticImplementationDays;
+  const puffer14 = days14 - ANIMA_CONFIG.realisticImplementationDays;
+  const puffer28 = days28 - ANIMA_CONFIG.realisticImplementationDays;
+
+  document.getElementById('puffer-days-now').textContent = String(daysNow);
+  document.getElementById('puffer-days-14').textContent = String(days14);
+  document.getElementById('puffer-days-28').textContent = String(days28);
+  document.getElementById('puffer-note-14').textContent = String(puffer14);
+  document.getElementById('puffer-note-28').textContent = String(puffer28);
+
+  renderPuffer(document.getElementById('puffer-buffer-now'), pufferNow);
+  renderPuffer(document.getElementById('puffer-buffer-14'), puffer14);
+  renderPuffer(document.getElementById('puffer-buffer-28'), puffer28);
+}
+
+function updateSlots() {
+  const total = ANIMA_CONFIG.totalAuditSlots;
+  const booked = ANIMA_CONFIG.bookedAuditSlots;
+  const remaining = Math.max(total - booked, 0);
+  const usedPct = Math.min((booked / total) * 100, 100);
+
+  const remainingEl = document.getElementById('slots-remaining');
+  const fillEl = document.getElementById('slots-bar-fill');
+  document.getElementById('slots-total').textContent = String(total);
+  document.getElementById('slots-booked').textContent = String(booked);
+  remainingEl.textContent = `${remaining} frei`;
+  fillEl.style.width = `${usedPct}%`;
+
+  remainingEl.classList.remove('green', 'amber', 'red');
+  fillEl.classList.remove('amber', 'red');
+  if (remaining < 20) {
+    remainingEl.classList.add('red');
+    fillEl.classList.add('red');
+  } else if (remaining <= 40) {
+    remainingEl.classList.add('amber');
+    fillEl.classList.add('amber');
+  } else {
+    remainingEl.classList.add('green');
+  }
+}
+
+function setupPackagePrefill() {
+  const packageInput = document.getElementById('lead-package');
+  document.querySelectorAll('.js-package-cta').forEach((cta) => {
+    cta.addEventListener('click', () => {
+      packageInput.value = cta.dataset.package || 'Basis';
+    });
+  });
+}
+
+function setupLeadForm() {
+  const form = document.getElementById('lead-form-main');
+  form.addEventListener('submit', async () => {
+    try {
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      await fetch(ANIMA_CONFIG.hermesWebhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      // Webhook-Fehler blockiert die normale Formularübermittlung nicht.
+    }
+  });
+}
+
+document.getElementById('lc-analyzed').textContent = String(ANIMA_CONFIG.liveCounterAnalyzed);
+document.getElementById('lc-compliant').textContent = String(ANIMA_CONFIG.liveCounterCompliant);
+updateCountdownAndPuffer();
+updateSlots();
+setupPackagePrefill();
+setupLeadForm();
+setInterval(updateCountdownAndPuffer, 1000);
 
 // ═══ ELEMENT C — Quick-Check ═══
 async function runQuickCheck() {
@@ -981,7 +1139,7 @@ async function runQuickCheck() {
     riskEl.className = 'qc-result-value ' + 
       (data.riskLevel === 'Hoch' ? 'red' : data.riskLevel === 'Niedrig' ? 'green' : 'amber');
     
-    document.getElementById('qc-r-issue').textContent = data.topIssue || 'Art. 52 Transparenz';
+    document.getElementById('qc-r-issue').textContent = data.topIssue || 'Art. 50 Transparenz';
     
     results.style.display = 'block';
     results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
